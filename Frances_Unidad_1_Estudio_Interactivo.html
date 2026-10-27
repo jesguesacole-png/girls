@@ -35,7 +35,7 @@
     <article class="tile"><div class="emoji">🎯</div><h3>Practicar jugando</h3><p>Elige respuestas, escribe en francés o encuentra las parejas.</p><button class="btn smallbtn secondary" data-goto="practicar">Ir a practicar</button></article>
     <article class="tile"><div class="emoji">📝</div><h3>Simulacro de examen</h3><p>20 preguntas y una nota sobre 10. Las respuestas se corrigen al finalizar.</p><button class="btn smallbtn secondary" data-goto="examen">Ir al simulacro</button></article>
   </div>
-  <div class="alert mt"><strong>📌 Contenido fiel a tu hoja.</strong> Todo el vocabulario y las frases de francés proceden de «Révision unité 1». La dirección de Lucas aparece en París en la tarjeta del club, pero el diálogo del documento dice que vive en Lyon. Cada actividad señala a cuál de los dos ejemplos se refiere.</div>
+  <div class="alert mt"><strong>📌 Preguntas para aprender francés.</strong> Solo practicamos los números, saludos, vocabulario y expresiones de «Révision unité 1». No hay que memorizar nombres de personajes, direcciones ni detalles de una ficha. En el simulacro tendrás que reconocer, elegir o escribir francés.</div>
 </section>
 
 <section class="screen" id="view-tarjetas">
@@ -63,16 +63,16 @@
 </section>
 
 <section class="screen" id="view-resumen">
-  <div class="intro"><div class="eyebrow">04 · La chuleta para estudiar (sin trucos)</div><h1>Resumen de la unidad 📖</h1><p>Las mismas palabras y expresiones de la hoja, ordenadas para que puedas repasarlas antes del simulacro.</p></div>
+  <div class="intro"><div class="eyebrow">04 · La chuleta para estudiar (sin trucos)</div><h1>Resumen de la unidad 📖</h1><p>Las palabras y expresiones de la hoja, ordenadas para repasar su significado y uso antes del simulacro.</p></div>
   <div id="summaryContent"></div>
-  <div class="alert mt"><strong>Una observación sobre Lucas:</strong> en el apartado «Présenter à quelqu’un» aparece «Il habite à Lyon», mientras que la «Carte du club Pariskate» incluye la dirección «8 place de la mairie, Paris». Son datos de dos ejemplos de la misma hoja.</div>
+  <div class="alert mt"><strong>Para aprovechar la tarjeta del club:</strong> es útil aprender qué significan <em>Prénom</em>, <em>Âge</em> y <em>Adresse</em>, y saber decir una edad con <em>ans</em>. No necesitas memorizar quién aparece en la tarjeta ni su dirección.</div>
   <div class="mt"><button class="btn ghost" type="button" id="resetProgress">Borrar mi progreso guardado</button></div>
 </section>
 <footer class="fineprint">Hecho para estudiar francés con calma 💜 · Fuente única: hoja «Révision unité 1» (1 página). Los avances se guardan solo en este navegador.</footer>
 </main>
 <script>
 'use strict';
-// CONTENIDO: exclusivamente las expresiones, números y datos de la hoja «Révision unité 1».
+// CONTENIDO: exclusivamente números, vocabulario y expresiones de la hoja «Révision unité 1». No se evalúan datos anecdóticos de los ejemplos.
 const DECKS=[
 {id:'nombres',title:'Les nombres de 1 à 12',icon:'🔢',cards:[
 ['un','1 · uno'],['deux','2 · dos'],['trois','3 · tres'],['quatre','4 · cuatro'],['cinq','5 · cinco'],['six','6 · seis'],['sept','7 · siete'],['huit','8 · ocho'],['neuf','9 · nueve'],['dix','10 · diez'],['onze','11 · once'],['douze','12 · doce']]},
@@ -84,17 +84,19 @@ const DECKS=[
 ['Comment tu t’appelles?','¿Cómo te llamas?'],['Je m’appelle Natalie.','Me llamo Natalie.'],['Quel âge tu as?','¿Cuántos años tienes?'],["J’ai 9 ans",'Tengo 9 años.'],['Où tu habites?','¿Dónde vives?'],["J’habite à Paris.",'Vivo en París.']]},
 {id:'autres',title:'Présenter à quelqu’un',icon:'🗣️',cards:[
 ['Comment il s’appelle?','¿Cómo se llama él?'],['Il s’appelle Lucas.','Él se llama Lucas.'],['Comment elle s’appelle?','¿Cómo se llama ella?'],['Elle s’appelle Pauline','Ella se llama Pauline.'],['Quel âge il a?','¿Cuántos años tiene él?'],['Il a 10 ans.','Él tiene 10 años.'],['Quel âge elle a?','¿Cuántos años tiene ella?'],['Elle a 11 ans.','Ella tiene 11 años.'],['Où il habite?','¿Dónde vive él?'],['Il habite à Lyon','Él vive en Lyon.'],['Où elle habite?','¿Dónde vive ella?'],['Elle habite à Marseille','Ella vive en Marsella.']]},
-{id:'club',title:'Carte du club Pariskate',icon:'🛹',cards:[
-['CARTE DU CLUB PARISKATE','Tarjeta del club Pariskate'],['Prénom : Lucas','Nombre: Lucas'],['Âge : 10 ans','Edad: 10 años'],['Adresse : 8 place de la mairie, Paris','Dirección: 8 place de la mairie, París']]}
+{id:'club',title:'Vocabulario de la tarjeta',icon:'🛹',cards:[
+['Prénom','Nombre de pila'],['Âge','Edad'],['Adresse','Dirección'],['Carte du club','Tarjeta del club'],['ans','años']]}
 ];
-const SECTIONS=[['nombres','Números'],['saluer','Saludos'],['personnes','Personas'],['presenter','Me presento'],['autres','Presentar a alguien'],['club','Tarjeta del club']];
+const SECTIONS=[['nombres','Números'],['saluer','Saludos'],['personnes','Personas'],['presenter','Me presento'],['autres','Presentar a alguien'],['club','Palabras de la ficha']];
 const byId=id=>document.getElementById(id);
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuffle=a=>{let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b};
 const norm=s=>String(s??'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘´`]/g,"'").replace(/[¡!¿?.,:;\-]/g,' ').replace(/\s+/g,' ').trim();
-const STORE='revision-frances-unite1-v1';
+const STORE='revision-frances-unite1-v1'; // Misma clave: conserva los avances de la aplicación anterior.
 let stored={mastered:[],right:0,done:0,best:null,last:null};
 try{let data=JSON.parse(localStorage.getItem(STORE)||'null');if(data&&Array.isArray(data.mastered))stored={...stored,...data};}catch(err){}
+// Al sustituir las tarjetas de datos personales por vocabulario útil, evitar que sus marcas antiguas cuenten como dominadas.
+if(!stored.educationalV2){stored.mastered=stored.mastered.filter(id=>!id.startsWith('club:'));stored.educationalV2=true;save();}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(stored));}catch(err){}}
 function deckOf(id){return DECKS.find(d=>d.id===id)||DECKS[0]}
 function itemId(d,i){return d.id+':'+i}
@@ -120,7 +122,7 @@ byId('cardSpeak').addEventListener('click',()=>sayFrench(deckOf(cardDeck).cards[
 // PREGUNTAS: vocabulario, frases y datos reproducidos de la hoja.
 function genericMCQ(deck){let pool=[];let isNumber=deck.id==='nombres';for(let i=0;i<deck.cards.length;i++){
  const [fr,es]=deck.cards[i];
- if(deck.id==='club')continue;
+ // La ficha ahora contiene solo vocabulario evaluable, igual que los demás temas.
  for(let direction of (deck.id==='saluer'&&fr==='Au revoir!'?['fr']:['es','fr'])){
   let answer=direction==='es'?fr:(isNumber?String(i+1):es);
   let optionsPool=deck.cards.map((c,j)=>direction==='es'?c[0]:(isNumber?String(j+1):c[1]));
@@ -130,25 +132,50 @@ function genericMCQ(deck){let pool=[];let isNumber=deck.id==='nombres';for(let i
  }
 }
 return pool;}
-function genericWritten(deck){if(deck.id==='club')return[];return deck.cards.map(([fr,es],i)=>({id:deck.id+'write'+i,section:deck.id,type:'write',prompt:deck.id==='nombres'?`Escribe en francés el número ${i+1}.`:`Escribe en francés la expresión «${es}».`,answer:fr,accepted:deck.id==='saluer'&&fr==='Au revoir!'?[fr,'Salut!']:[fr],explanation:`La expresión de la hoja es «${fr}».`}));}
+function genericWritten(deck){return deck.cards.map(([fr,es],i)=>({id:deck.id+'write'+i,section:deck.id,type:'write',prompt:deck.id==='nombres'?`Escribe en francés el número ${i+1}.`:`Escribe en francés la expresión «${es}».`,answer:fr,accepted:deck.id==='saluer'&&fr==='Au revoir!'?[fr,'Salut!']:[fr],explanation:`La expresión de la hoja es «${fr}».`}));}
 const EXTRA=[
-{id:'clubmc1',section:'club',type:'mcq',prompt:'En la «Carte du club Pariskate», ¿cuál es el nombre (prénom) del niño?',answer:'Lucas',options:['Lucas','Natalie','Pauline','Pariskate'],explanation:'En la tarjeta se lee «Prénom : Lucas». '},
-{id:'clubmc2',section:'club',type:'mcq',prompt:'Según la tarjeta del club, ¿qué edad tiene Lucas?',answer:'10 ans',options:['9 ans','10 ans','11 ans','12 ans'],explanation:'La tarjeta indica «Âge : 10 ans». '},
-{id:'clubmc3',section:'club',type:'mcq',prompt:'¿En qué ciudad termina la dirección de la tarjeta de Lucas?',answer:'Paris',options:['Paris','Lyon','Marseille','No indica ninguna ciudad'],explanation:'La dirección de la tarjeta termina en «Paris». '},
-{id:'clubmc4',section:'club',type:'mcq',prompt:'¿Qué nombre aparece en el título de la tarjeta del club?',answer:'Pariskate',options:['Pariskate','Lucas','Pauline','Natalie'],explanation:'En el documento aparece «CARTE DU CLUB PARISKATE». '},
-{id:'clubwr1',section:'club',type:'write',prompt:'Escribe el prénom (nombre) que aparece en la tarjeta del club.',answer:'Lucas',accepted:['Lucas'],explanation:'La ficha dice «Prénom : Lucas». '},
-{id:'clubwr2',section:'club',type:'write',prompt:'¿Qué edad aparece en la «Carte du club Pariskate»? Escribe el número seguido de «ans».',answer:'10 ans',accepted:['10 ans'],explanation:'La ficha dice «Âge : 10 ans». '},
-{id:'clubwr3',section:'club',type:'write',prompt:'¿Qué ciudad aparece al final de la dirección en la tarjeta del club?',answer:'Paris',accepted:['Paris','París'],explanation:'La dirección dice «8 place de la mairie, Paris». '},
-{id:'selfmc1',section:'presenter',type:'mcq',prompt:'En «Je me présente», ¿qué nombre aparece después de «Je m’appelle»?',answer:'Natalie',options:['Natalie','Pauline','Lucas','Paris'],explanation:'El ejemplo personal dice «Je m’appelle Natalie». '},
-{id:'selfmc2',section:'presenter',type:'mcq',prompt:'Según «Je me présente», ¿qué edad dice tener Natalie?',answer:'9 ans',options:['9 ans','10 ans','11 ans','12 ans'],explanation:'En ese apartado figura «J’ai 9 ans». '},
-{id:'selfmc3',section:'presenter',type:'mcq',prompt:'¿Dónde dice vivir la persona en «Je me présente»?',answer:'Paris',options:['Paris','Lyon','Marseille','No indica ciudad'],explanation:'El modelo de presentación incluye «J’habite à Paris». '},
-{id:'othermc1',section:'autres',type:'mcq',prompt:'En «Présenter à quelqu’un», ¿cómo se llama la chica?',answer:'Pauline',options:['Pauline','Natalie','Lucas','Pariskate'],explanation:'En ese apartado se lee «Elle s’appelle Pauline». '},
-{id:'othermc2',section:'autres',type:'mcq',prompt:'En «Présenter à quelqu’un», ¿dónde vive Lucas según la FRASE del diálogo?',answer:'Lyon',options:['Lyon','Paris','Marseille','No lo dice'],explanation:'En ese diálogo figura «Il habite à Lyon». La tarjeta independiente da una dirección en París.'},
-{id:'othermc3',section:'autres',type:'mcq',prompt:'En «Présenter à quelqu’un», ¿dónde vive Pauline?',answer:'Marseille',options:['Marseille','Lyon','Paris','No lo dice'],explanation:'En el diálogo dice «Elle habite à Marseille». '},
-{id:'othermc4',section:'autres',type:'mcq',prompt:'En «Présenter à quelqu’un», ¿qué edad tiene Pauline?',answer:'11 ans',options:['11 ans','10 ans','9 ans','12 ans'],explanation:'La frase de la hoja es «Elle a 11 ans». '},
-{id:'otherwr1',section:'autres',type:'write',prompt:'¿Cómo se llama la chica del apartado «Présenter à quelqu’un»? Escribe su nombre.',answer:'Pauline',accepted:['Pauline'],explanation:'Dice «Elle s’appelle Pauline». '},
-{id:'otherwr2',section:'autres',type:'write',prompt:'En «Présenter à quelqu’un», escribe la ciudad donde dice vivir Pauline.',answer:'Marseille',accepted:['Marseille'],explanation:'Se lee «Elle habite à Marseille». '},
-{id:'otherwr3',section:'autres',type:'write',prompt:'En «Présenter à quelqu’un», escribe la ciudad donde dice vivir Lucas.',answer:'Lyon',accepted:['Lyon'],explanation:'El diálogo dice «Il habite à Lyon». '}
+// Saludos y situaciones: no se pide recordar cómo está maquetada la hoja.
+{id:'saluerAplic1',section:'saluer',type:'mcq',prompt:'Quieres saludar diciendo «Buenos días». ¿Qué expresión usarías?',answer:'Bonjour!',options:['Bonjour!','Au revoir!','Ça va?','Ça va mal!'],explanation:'«Bonjour!» sirve para saludar: «¡Hola! / Buenos días».'},
+{id:'saluerAplic2',section:'saluer',type:'mcq',prompt:'Alguien te pregunta «Ça va?» y tú estás bien. ¿Qué respondes?',answer:'Ça va bien!',options:['Ça va bien!','Ça va mal!','Au revoir!','Bonjour!'],explanation:'«Ça va bien!» expresa que estás bien.'},
+{id:'saluerAplic3',section:'saluer',type:'mcq',prompt:'¿Qué expresión de la unidad usarías para despedirte diciendo «Adiós»?',answer:'Au revoir!',options:['Au revoir!','Ça va bien!','Bonjour!','Ça va?'],explanation:'«Au revoir!» significa «¡Adiós!».'},
+{id:'saluerAplic4',section:'saluer',type:'mcq',prompt:'Si quieres saber cómo se encuentra alguien, ¿qué le preguntas?',answer:'Ça va?',options:['Ça va?','Ça va bien!','Ça va mal!','Au revoir!'],explanation:'«Ça va?» significa «¿Qué tal estás?».'},
+{id:'saluerAplicW1',section:'saluer',type:'write',prompt:'Escribe la expresión francesa para preguntar «¿Qué tal estás?».',answer:'Ça va?',explanation:'Se pregunta «Ça va?».'},
+{id:'saluerAplicW2',section:'saluer',type:'write',prompt:'Te preguntan cómo estás, pero estás mal. Escribe la respuesta en francés.',answer:'Ça va mal!',explanation:'«Ça va mal!» expresa que estás mal.'},
+// Personas: distinguir el vocabulario que se usa realmente.
+{id:'personnesAplic1',section:'personnes',type:'mcq',prompt:'Para decir «la niña» en francés, ¿qué opción eliges?',answer:'La fille',options:['La fille','Le garçon','La femme','La voisine'],explanation:'«La fille» significa «la niña».'},
+{id:'personnesAplic2',section:'personnes',type:'mcq',prompt:'¿Qué expresión francesa significa «los padres»?',answer:'Les parents',options:['Les parents','Les enfants','Le voisin','La femme'],explanation:'«Les parents» significa «los padres».'},
+{id:'personnesAplic3',section:'personnes',type:'mcq',prompt:'Quieres hablar de «la profesora». ¿Qué palabra aparece en la unidad?',answer:'La professeure',options:['La professeure','Le professeur','La voisine','La femme'],explanation:'En la hoja, «La professeure» se usa para «la profesora».'},
+{id:'personnesAplic4',section:'personnes',type:'mcq',prompt:'¿Qué palabra usarías para referirte a «la vecina»?',answer:'La voisine',options:['La voisine','Le voisin','La femme','La fille'],explanation:'«La voisine» significa «la vecina».'},
+{id:'personnesAplicW1',section:'personnes',type:'write',prompt:'Escribe en francés «los niños / los hijos».',answer:'Les enfants',explanation:'En la hoja aparece «Les enfants».'},
+// Presentarse: comprender y completar respuestas, no memorizar nombres de personajes.
+{id:'selfmc1',section:'presenter',type:'mcq',prompt:'Si alguien dice «Je m’appelle Natalie», ¿qué información está dando?',answer:'Su nombre',options:['Su nombre','Su edad','Dónde vive','Cómo se encuentra'],explanation:'«Je m’appelle…» sirve para decir cómo te llamas.'},
+{id:'selfmc2',section:'presenter',type:'mcq',prompt:'¿Cómo dirías «Tengo 9 años» en francés?',answer:'J’ai 9 ans',options:['J’ai 9 ans','Il a 10 ans.','Elle a 11 ans.','Je m’appelle Natalie.'],explanation:'La estructura de la hoja es «J’ai 9 ans» para decir tu edad.'},
+{id:'selfmc3',section:'presenter',type:'mcq',prompt:'Para preguntar a otra persona «¿Dónde vives?», ¿qué frase utilizarías?',answer:'Où tu habites?',options:['Où tu habites?','Où il habite?','Où elle habite?','Quel âge tu as?'],explanation:'«Où tu habites?» es la pregunta dirigida a la persona con la que hablas.'},
+{id:'selfmc4',section:'presenter',type:'mcq',prompt:'Te preguntan «Quel âge tu as?». ¿Cuál de estas frases responde a la pregunta?',answer:'J’ai 9 ans',options:['J’ai 9 ans','J’habite à Paris.','Je m’appelle Natalie.','Ça va bien!'],explanation:'Una respuesta a la pregunta sobre tu edad es «J’ai 9 ans».'},
+{id:'selfmc5',section:'presenter',type:'mcq',prompt:'¿Qué pregunta se utiliza para saber cómo se llama la persona con la que hablas?',answer:'Comment tu t’appelles?',options:['Comment tu t’appelles?','Comment il s’appelle?','Quel âge tu as?','Où tu habites?'],explanation:'«Comment tu t’appelles?» pregunta el nombre de la persona a la que te diriges.'},
+{id:'selfwr1',section:'presenter',type:'write',prompt:'Te preguntan «Comment tu t’appelles?». Contesta en francés «Me llamo Natalie».',answer:'Je m’appelle Natalie.',explanation:'Para presentarte puedes decir «Je m’appelle Natalie».'},
+{id:'selfwr2',section:'presenter',type:'write',prompt:'Te preguntan «Où tu habites?». Contesta en francés «Vivo en París».',answer:'J’habite à Paris.',explanation:'Para decir dónde vives puedes responder «J’habite à Paris».'},
+{id:'selfwr3',section:'presenter',type:'write',prompt:'Escribe la pregunta francesa «¿Cuántos años tienes?».',answer:'Quel âge tu as?',explanation:'La pregunta del documento es «Quel âge tu as?».'},
+// Presentar a alguien: distinguir «il», «elle» y «je».
+{id:'othermc1',section:'autres',type:'mcq',prompt:'«Elle s’appelle Pauline.» ¿Qué comunica esta frase?',answer:'Cómo se llama ella',options:['Cómo se llama ella','Cuántos años tiene él','Dónde vive ella','Cómo se llama él'],explanation:'«Elle s’appelle…» sirve para decir cómo se llama ella.'},
+{id:'othermc2',section:'autres',type:'mcq',prompt:'¿Cómo dirías en francés «Él vive en Lyon»?',answer:'Il habite à Lyon',options:['Il habite à Lyon','Elle habite à Marseille','J’habite à Paris.','Il a 10 ans.'],explanation:'«Il habite à Lyon» significa «Él vive en Lyon».'},
+{id:'othermc3',section:'autres',type:'mcq',prompt:'Para preguntar «¿Cuántos años tiene ella?», ¿qué expresión usarías?',answer:'Quel âge elle a?',options:['Quel âge elle a?','Quel âge il a?','Quel âge tu as?','Comment elle s’appelle?'],explanation:'«Quel âge elle a?» pregunta por la edad de ella.'},
+{id:'othermc4',section:'autres',type:'mcq',prompt:'¿Qué frase expresa la pregunta «¿Cómo se llama él?»?',answer:'Comment il s’appelle?',options:['Comment il s’appelle?','Comment elle s’appelle?','Comment tu t’appelles?','Où il habite?'],explanation:'«Comment il s’appelle?» pregunta por el nombre de él.'},
+{id:'othermc5',section:'autres',type:'mcq',prompt:'¿Cuál de estas frases significa «Ella tiene 11 años»?',answer:'Elle a 11 ans.',options:['Elle a 11 ans.','Il a 10 ans.','J’ai 9 ans','Elle habite à Marseille'],explanation:'«Elle a 11 ans» sirve para decir que ella tiene once años.'},
+{id:'otherwr1',section:'autres',type:'write',prompt:'Escribe en francés la pregunta «¿Cómo se llama ella?».',answer:'Comment elle s’appelle?',explanation:'Se pregunta «Comment elle s’appelle?».'},
+{id:'otherwr2',section:'autres',type:'write',prompt:'Traduce al francés «Ella vive en Marsella».',answer:'Elle habite à Marseille',explanation:'Se dice «Elle habite à Marseille».'},
+{id:'otherwr3',section:'autres',type:'write',prompt:'Traduce al francés «Él tiene 10 años».',answer:'Il a 10 ans.',explanation:'Se dice «Il a 10 ans».'},
+{id:'otherwr4',section:'autres',type:'write',prompt:'Escribe la pregunta francesa «¿Dónde vive él?».',answer:'Où il habite?',explanation:'La pregunta de la hoja es «Où il habite?».'},
+// Tarjeta del club: solo su vocabulario funcional, NO recordar nombres, títulos propios ni direcciones.
+{id:'clubmc1',section:'club',type:'mcq',prompt:'En una ficha como la del club, ¿qué significa la palabra «Prénom»?',answer:'Nombre de pila',options:['Nombre de pila','Edad','Dirección','Tarjeta del club'],explanation:'«Prénom» es el campo del nombre de pila.'},
+{id:'clubmc2',section:'club',type:'mcq',prompt:'¿Qué dato se escribe en el apartado francés «Âge»?',answer:'Edad',options:['Edad','Dirección','Nombre de pila','Tarjeta del club'],explanation:'«Âge» significa «edad».'},
+{id:'clubmc3',section:'club',type:'mcq',prompt:'¿Qué significa «Adresse» en español?',answer:'Dirección',options:['Dirección','Edad','Nombre de pila','Años'],explanation:'«Adresse» significa «dirección».'},
+{id:'clubmc4',section:'club',type:'mcq',prompt:'Si una ficha indica «10 ans», ¿qué significa?',answer:'10 años',options:['10 años','10 niños','10 padres','10 nombres'],explanation:'«ans» significa «años», y «10 ans» expresa una edad de diez años.'},
+{id:'clubmc5',section:'club',type:'mcq',prompt:'En «Carte du club», ¿qué significa «carte» dentro de esta expresión?',answer:'Tarjeta',options:['Tarjeta','Edad','Dirección','Vecino'],explanation:'«Carte du club» significa «tarjeta del club».'},
+{id:'clubwr1',section:'club',type:'write',prompt:'Escribe en francés la palabra «edad» que aparece en la ficha.',answer:'Âge',explanation:'En la ficha, «Âge» indica la edad.'},
+{id:'clubwr2',section:'club',type:'write',prompt:'Escribe en francés «dirección», tal como aparece en la ficha.',answer:'Adresse',explanation:'La palabra francesa del documento es «Adresse».'},
+{id:'clubwr3',section:'club',type:'write',prompt:'Escribe en francés «nombre de pila», tal como aparece en la ficha.',answer:'Prénom',explanation:'«Prénom» indica el nombre de pila.'},
+{id:'clubwr4',section:'club',type:'write',prompt:'¿Cómo se escribe «10 años» en francés?',answer:'10 ans',explanation:'«10 ans» significa «10 años».'}
 ];
 const ALL_MCQ=[...DECKS.flatMap(genericMCQ),...EXTRA.filter(q=>q.type==='mcq')];
 const ALL_WRITE=[...DECKS.flatMap(genericWritten),...EXTRA.filter(q=>q.type==='write')];
