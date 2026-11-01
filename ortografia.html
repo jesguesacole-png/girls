@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Ortografía en juego · Practica la ortografía del español</title>
 <meta name="description" content="Teoría visual y ejercicios para practicar la ortografía del español: tildes, b/v, g/j, h, ll/y, c/z, r/rr, m/n y palabras que suenan igual.">
 <style>
@@ -11,20 +12,39 @@
   --ok:#2f9e44; --okbg:#e6f7ea; --ko:#e03131; --kobg:#fdeaea; --accent:#6741d9;
   --aguda:#e8590c; --llana:#1c7ed6; --esdrujula:#2f9e44; --sobres:#7048e8;
   --r:18px; --shadow:0 4px 18px rgba(60,40,140,.08);
+  --soft:#efebff; --soft2:#f4f3fa; --soft3:#faf9ff; --topbg:rgba(255,255,255,.92);
+  --trickbg:#fff8db; --trickline:#f2c94c; --okline:#b2f2bb; --koline:#ffc9c9; --streakbg:#fff4e6;
+  --font:"Nunito",ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --root:16px; --lh:1.5; --ls:normal;
 }
+html[data-theme="dark"]{
+  --bg:#16141f; --card:#221f30; --ink:#ece9f7; --muted:#aaa5c6; --line:#3a3550;
+  --ok:#51cf66; --okbg:#173a22; --ko:#ff6b6b; --kobg:#3f1d1f;
+  --soft:#2f2a46; --soft2:#2a2639; --soft3:#272335; --topbg:rgba(34,31,48,.94);
+  --trickbg:#352e16; --trickline:#8a7020; --okline:#2b6a3a; --koline:#7a3236; --streakbg:#3d2a17;
+  --shadow:0 4px 18px rgba(0,0,0,.35);
+}
+html[data-theme="sepia"]{
+  --bg:#f5eedc; --card:#fffaf0; --ink:#3b2f22; --muted:#7a6a55; --line:#e6dcc4;
+  --soft:#f1e7d0; --soft2:#efe6d2; --soft3:#fbf4e4; --topbg:rgba(255,250,240,.94);
+}
+html[data-theme="dark"] .hl{filter:brightness(1.7)}
+html.calm *,html.calm *::before,html.calm *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.novoice .speak{display:none}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{font-family:"Nunito",ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+html{font-size:var(--root)}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:var(--lh);letter-spacing:var(--ls);font-size:1.0625rem}
 button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.top{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--topbg);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .brand{border:0;background:none;font-weight:900;font-size:1.25rem;padding:4px 6px;border-radius:10px}
 .brand span{color:var(--accent)}
 .topright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.lvl{display:flex;background:#efebff;border-radius:999px;padding:3px}
+.lvl{display:flex;background:var(--soft);border-radius:999px;padding:3px}
 .lvl button{border:0;background:none;padding:6px 12px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--muted)}
-.lvl button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem}
+.lvl button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem}
 main{max-width:980px;margin:0 auto;padding:18px 16px 60px}
 h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
 h1{font-size:1.8rem} h2{font-size:1.4rem} h3{font-size:1.12rem}
@@ -33,7 +53,7 @@ h1{font-size:1.8rem} h2{font-size:1.4rem} h3{font-size:1.12rem}
 .hello .big{font-size:3rem}
 .muted{color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.mod{border:0;text-align:left;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:16px;border-top:6px solid var(--c);transition:transform .12s}
+.mod{border:0;text-align:left;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;border-top:6px solid var(--c);transition:transform .12s}
 .mod:hover{transform:translateY(-3px)}
 .mod .em{font-size:2rem}
 .mod b{display:block;font-size:1.1rem;margin:.2em 0}
@@ -45,19 +65,19 @@ h1{font-size:1.8rem} h2{font-size:1.4rem} h3{font-size:1.12rem}
 .modhead{display:flex;gap:12px;align-items:center;border-left:8px solid var(--c);padding-left:12px;margin-bottom:12px}
 .modhead .em{font-size:2.4rem}
 .tabs{display:flex;gap:8px;margin:8px 0 16px}
-.tabs button{flex:1;border:2px solid var(--c);background:#fff;border-radius:14px;padding:10px;font-weight:800}
+.tabs button{flex:1;border:2px solid var(--c);background:var(--card);border-radius:14px;padding:10px;font-weight:800}
 .tabs button.on{background:var(--c);color:#fff}
 .intro{font-size:1.05rem}
-.trick{background:#fff8db;border:2px dashed #f2c94c;border-radius:14px;padding:12px 14px;margin:12px 0}
-.rule{border-left:6px solid var(--c);background:#fff;border-radius:12px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.trick{background:var(--trickbg);border:2px dashed var(--trickline);border-radius:14px;padding:12px 14px;margin:12px 0}
+.rule{border-left:6px solid var(--c);background:var(--card);border-radius:12px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 6px rgba(0,0,0,.05)}
 .rule h3{margin:0 0 4px;font-size:1.05rem}
 .ex{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.word{border:1px solid var(--line);background:#faf9ff;border-radius:10px;padding:3px 10px;font-size:1.05rem}
-button.word:hover{background:#efebff}
+.word{border:1px solid var(--line);color:var(--ink);background:var(--soft3);border-radius:10px;padding:3px 10px;font-size:1.05rem}
+button.word:hover{background:var(--soft)}
 .hl{color:var(--c,#6741d9);font-weight:900;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:3px}
 .sent{font-size:1.02rem;margin:4px 0}
 .plist{display:grid;gap:12px}
-.pbtn{display:flex;gap:14px;align-items:center;text-align:left;border:2px solid var(--line);background:#fff;border-radius:var(--r);padding:14px 16px}
+.pbtn{display:flex;gap:14px;align-items:center;text-align:left;border:2px solid var(--line);background:var(--card);border-radius:var(--r);padding:14px 16px}
 .pbtn:hover{border-color:var(--c)}
 .pbtn .em{font-size:2rem}
 .pbtn b{display:block}
@@ -66,24 +86,24 @@ button.word:hover{background:#efebff}
 /* teoría de acentos */
 .sec{margin:18px 0}
 .sylls{display:inline-flex;gap:4px;align-items:center;margin:4px 8px 4px 0;border:0;background:none;padding:0}
-.syl{display:inline-block;padding:4px 10px;border-radius:10px;background:#eef0f6;font-weight:700;font-size:1.1rem}
+.syl{display:inline-block;padding:4px 10px;border-radius:10px;background:var(--soft2);font-weight:700;font-size:1.1rem}
 .syl.ton{color:#fff;background:var(--t,#6741d9);transform:scale(1.08)}
 .postable{width:100%;border-collapse:separate;border-spacing:4px;font-size:.95rem}
 .postable th{font-size:.78rem;color:var(--muted);font-weight:700;text-align:center}
-.postable td{text-align:center;padding:6px 2px;border-radius:10px;background:#f4f3fa}
+.postable td{text-align:center;padding:6px 2px;border-radius:10px;background:var(--soft2)}
 .postable td.lab{text-align:left;background:none;font-weight:900;color:var(--t);white-space:nowrap}
 .postable td.ton{background:var(--t);color:#fff;font-weight:900}
 .postable td.empty{background:none}
 .tcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.tcard{border-radius:14px;padding:14px;border:3px solid var(--t);background:#fff}
+.tcard{border-radius:14px;padding:14px;border:3px solid var(--t);background:var(--card)}
 .tcard h3{color:var(--t);margin-bottom:6px}
 .yes{color:var(--ok);font-weight:800}.no{color:var(--ko);font-weight:800}
-.badge{display:inline-block;background:var(--ink);color:#fff;border-radius:10px;padding:2px 10px;font-weight:900;letter-spacing:1px}
+.badge{display:inline-block;background:var(--ink);color:var(--card);border-radius:10px;padding:2px 10px;font-weight:900;letter-spacing:1px}
 .flow{display:grid;gap:8px;justify-items:center;text-align:center}
-.fstep{background:#efebff;border-radius:12px;padding:8px 16px;font-weight:800;max-width:520px}
+.fstep{background:var(--soft);border-radius:12px;padding:8px 16px;font-weight:800;max-width:520px}
 .farrow{color:var(--muted);font-size:1.3rem;line-height:1}
 .fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;width:100%}
-.fcol{border:3px solid var(--t);border-radius:14px;padding:10px;background:#fff}
+.fcol{border:3px solid var(--t);border-radius:14px;padding:10px;background:var(--card)}
 .fcol b{color:var(--t)}
 .vow{display:inline-block;width:2.2em;text-align:center;border-radius:10px;padding:4px 0;font-weight:900;font-size:1.2rem;margin:2px}
 .vow.a{background:#ffe3e3;color:#c92a2a}.vow.c{background:#e7f5ff;color:#1864ab}
@@ -92,7 +112,7 @@ table.pairs td,table.pairs th{border-bottom:1px solid var(--line);padding:6px 8p
 table.pairs th{color:var(--muted);font-size:.85rem}
 /* quiz */
 .qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-.bar{height:12px;background:#e9e6f7;border-radius:999px;overflow:hidden;flex:1;min-width:140px}
+.bar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;flex:1;min-width:140px}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#7950f2,#d6336c);transition:width .3s}
 .score{font-weight:800;white-space:nowrap}
 .qcard{text-align:center;padding:24px 18px}
@@ -105,7 +125,7 @@ table.pairs th{color:var(--muted);font-size:.85rem}
 .qsent{font-size:clamp(1.25rem,4.5vw,1.7rem);font-weight:800;margin:14px 0}
 .qsent .blank{min-width:2.5em}
 .opts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:16px 0 6px}
-.opt{min-width:110px;border:3px solid var(--line);background:#fff;border-radius:16px;padding:12px 20px;font-size:1.5rem;font-weight:900;transition:transform .08s}
+.opt{min-width:110px;border:3px solid var(--line);background:var(--card);border-radius:16px;padding:12px 20px;font-size:1.5rem;font-weight:900;transition:transform .08s}
 .opt.small{font-size:1.15rem}
 .opt:hover:not(:disabled){border-color:var(--accent);transform:translateY(-2px)}
 .opt:disabled{cursor:default}
@@ -113,10 +133,10 @@ table.pairs th{color:var(--muted);font-size:.85rem}
 .opt.wrong{border-color:var(--ko);background:var(--kobg);color:var(--ko)}
 .opt.dim{opacity:.45}
 .opt kbd{display:block;font-size:.7rem;color:var(--muted);font-family:inherit;font-weight:700}
-.speak{border:0;background:#efebff;border-radius:999px;padding:8px 14px;font-weight:800}
+.speak{border:0;background:var(--soft);border-radius:999px;padding:8px 14px;font-weight:800}
 .fb{border-radius:14px;padding:12px 14px;margin-top:14px;text-align:left}
-.fb.ok{background:var(--okbg);border:2px solid #b2f2bb}
-.fb.ko{background:var(--kobg);border:2px solid #ffc9c9}
+.fb.ok{background:var(--okbg);border:2px solid var(--okline)}
+.fb.ko{background:var(--kobg);border:2px solid var(--koline)}
 .fb .rl{margin-top:6px;font-size:.98rem}
 .next{display:block;margin:16px auto 0;border:0;background:var(--accent);color:#fff;font-weight:900;font-size:1.15rem;border-radius:14px;padding:12px 28px}
 .step{border-top:2px dashed var(--line);margin-top:16px;padding-top:12px}
@@ -130,26 +150,57 @@ table.pairs th{color:var(--muted);font-size:.85rem}
 .mist{text-align:left;margin-top:12px}
 .mist li{margin:4px 0}
 .rbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
-.rbtns button{border:0;border-radius:14px;padding:12px 18px;font-weight:800;background:#efebff}
+.rbtns button{border:0;border-radius:14px;padding:12px 18px;font-weight:800;background:var(--soft)}
 .rbtns button.main{background:var(--accent);color:#fff}
-.streak{display:inline-block;background:#fff4e6;color:#d9480f;border-radius:999px;padding:2px 10px;font-weight:800;font-size:.9rem}
+.streak{display:inline-block;background:var(--streakbg);color:#d9480f;border-radius:999px;padding:2px 10px;font-weight:800;font-size:.9rem}
 /* modal */
 .modal{position:fixed;inset:0;background:rgba(30,20,60,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
 .modal[hidden]{display:none}
-.mbox{background:#fff;border-radius:22px;padding:22px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.mbox{background:var(--card);border-radius:22px;padding:22px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.25)}
 .plrow{display:flex;gap:6px;margin:6px 0}
-.plrow .pl{flex:1;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:800}
-.plrow .pl.cur{border-color:var(--accent);background:#f3f0ff}
-.plrow .del{border:0;background:#fff0f0;border-radius:12px;padding:0 12px}
+.plrow .pl{flex:1;text-align:left;border:2px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-weight:800}
+.plrow .pl.cur{border-color:var(--accent);background:var(--soft)}
+.plrow .del{border:0;background:var(--kobg);border-radius:12px;padding:0 12px}
 .newpl{display:flex;gap:6px;margin-top:12px}
-.newpl input{flex:1;font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px 12px}
+.newpl input{flex:1;font:inherit;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:10px 12px}
 .newpl button{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:0 16px;font-weight:800}
 .guest{border:0;background:none;color:var(--muted);text-decoration:underline;margin-top:10px}
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
 .confetti{position:fixed;top:-40px;font-size:28px;pointer-events:none;z-index:60;animation:fall 2.4s linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
 @media (prefers-reduced-motion:reduce){.confetti{display:none}.mod,.opt,.bar i{transition:none}}
-@media (max-width:520px){body{font-size:16px}.opt{min-width:90px;padding:10px 14px}.brand{font-size:1.05rem}}
+@media (max-width:520px){body{font-size:1rem}.opt{min-width:90px;padding:10px 14px}.brand{font-size:1.05rem}}
+/* sello de identidad cristiana */
+.seal{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:6px 16px 6px 12px;margin:0 auto 10px;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:.92rem;letter-spacing:.01em;transition:border-color .15s,color .15s}
+.seal:hover{border-color:var(--accent);color:var(--ink)}
+.seal svg{width:12px;height:17px;flex:none;color:var(--accent)}
+.xclose{position:absolute;top:10px;right:10px;width:40px;height:40px;border:0;border-radius:999px;background:var(--soft);font-size:1.1rem;line-height:1}
+.xclose:hover{background:var(--line)}
+.dlg{position:relative;max-height:88vh;overflow-y:auto}
+.faithbox{max-width:560px;padding:28px 26px 22px;text-align:left}
+.faithbox h2{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.35rem;padding-right:40px;margin-bottom:14px}
+.faithbox h2 .cross{color:var(--accent);font-size:1.15em;margin-right:4px}
+.faithbox p{font-family:Georgia,"Times New Roman",serif;font-size:1.02rem;line-height:1.65;margin:0 0 12px}
+.faithbox blockquote{margin:14px 0;padding:8px 0 8px 14px;border-left:4px solid var(--accent)}
+.faithbox blockquote p{font-style:italic;margin:0}
+.faithbox cite{display:block;font-style:normal;font-size:.88rem;color:var(--muted);margin-top:4px;font-variant:small-caps;letter-spacing:.04em}
+.dlgfoot{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:12px}
+.dlgfoot button{border:0;border-radius:14px;padding:10px 20px;font-weight:800;background:var(--soft)}
+.dlgfoot button.main{background:var(--accent);color:#fff}
+.prefbox{max-width:560px;padding:24px 22px 18px}
+.prefbox h2{padding-right:40px}
+.pgroup{border:0;margin:0 0 14px;padding:0}
+.pgroup legend{font-weight:800;margin-bottom:6px;padding:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg span{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--line);background:var(--card);border-radius:12px;padding:7px 12px;font-weight:700;font-size:.92rem;cursor:pointer}
+.seg input:checked+span{border-color:var(--accent);background:var(--soft)}
+.seg input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.dot{width:16px;height:16px;border-radius:50%;display:inline-block}
+.icobtn{border:1px solid var(--line);background:var(--card);border-radius:999px;width:38px;height:38px;font-size:1.05rem;display:inline-flex;align-items:center;justify-content:center}
+html.lock{overflow:hidden}
+@media (max-width:520px){.faithbox{padding:24px 18px 18px}.faithbox h2{font-size:1.18rem}.seal{font-size:.85rem}}
 </style>
 </head>
 <body>
@@ -160,6 +211,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
       <button type="button" data-lvl="1" title="Para empezar (8-9 años)">🌱 Básico</button>
       <button type="button" data-lvl="2" title="Más palabras y reglas (10 años en adelante)">🚀 Avanzado</button>
     </div>
+    <button type="button" id="prefsBtn" class="icobtn" aria-label="Personalizar la página" title="Personalizar" aria-haspopup="dialog">🎨</button>
     <button type="button" id="playerBtn" class="chip">👤 <span id="playerName">Invitado</span> · ⭐ <span id="playerStars">0</span></button>
   </div>
 </header>
@@ -178,7 +230,34 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
   </div>
 </div>
 
-<footer>Reglas basadas en la <i>Ortografía de la lengua española</i> (RAE, 2010). Tu progreso se guarda solo en este navegador.</footer>
+<footer>
+  <div><button type="button" id="faithBtn" class="seal" aria-haspopup="dialog" aria-label="Una inspiración, un don y un servicio. Abrir dedicatoria">
+    <svg viewBox="0 0 12 17" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 0h2v4.5h4v2H7V17H5V6.5H1v-2h4z"/></svg>
+    <span>Una inspiración, un don y un servicio</span></button></div>
+  Reglas basadas en la <i>Ortografía de la lengua española</i> (RAE, 2010). Tu progreso se guarda solo en este navegador.</footer>
+
+<div id="faith" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="faithTitle">
+  <div class="mbox dlg faithbox">
+    <button type="button" class="xclose" data-close aria-label="Cerrar">✕</button>
+    <h2 id="faithTitle"><span class="cross" aria-hidden="true">✝&#xFE0E;</span> Una inspiración, un don y un servicio</h2>
+    <p>Reconozco en Dios el origen de mis talentos, de mi creatividad y de la inspiración que me impulsa a desarrollar estas herramientas.</p>
+    <p>Con gratitud al Señor, pongo mi trabajo y sus frutos al servicio de los demás, con el deseo de facilitar tareas, resolver necesidades y contribuir, aunque sea modestamente, a mejorar la vida de las personas.</p>
+    <p>A Él ofrezco este trabajo, con sus aciertos, sus limitaciones y todo lo que aún queda por aprender y mejorar.</p>
+    <blockquote><p>«Todo buen regalo y todo don perfecto viene de arriba».</p><cite>Santiago 1,17</cite></blockquote>
+    <blockquote><p>«Poned al servicio de los demás el carisma que cada uno ha recibido».</p><cite>1 Pedro 4,10</cite></blockquote>
+    <div class="dlgfoot"><button type="button" class="main" data-close>Cerrar</button></div>
+  </div>
+</div>
+
+<div id="prefs" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="prefsTitle">
+  <div class="mbox dlg prefbox">
+    <button type="button" class="xclose" data-close aria-label="Cerrar">✕</button>
+    <h2 id="prefsTitle">🎨 Personaliza la página</h2>
+    <p class="muted" style="margin-top:0">Los cambios se aplican al momento y se guardan en este navegador.</p>
+    <div id="prefsBody"></div>
+    <div class="dlgfoot"><button type="button" id="prefsReset">↺ Restablecer</button><button type="button" class="main" data-close>Listo</button></div>
+  </div>
+</div>
 
 <script>
 'use strict';
@@ -199,11 +278,11 @@ function pickVoice() {
 }
 if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
 function speak(text) {
-  if (!('speechSynthesis' in window)) return;
+  if (!('speechSynthesis' in window) || !PREFS.voice) return;
   try {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'es-ES'; u.rate = 0.8;
+    u.lang = 'es-ES'; u.rate = PREFS.rate === 'lenta' ? 0.6 : 0.8;
     if (esVoice) u.voice = esVoice;
     speechSynthesis.speak(u);
   } catch (e) { /* sin voz disponible */ }
@@ -766,7 +845,7 @@ function buildQs(mod, prac, items) {
 }
 function startPractice(modId, pracId) {
   const m = modById(modId), p = m.practices.find(x => x.id === pracId);
-  const len = p.len || 10;
+  const len = PREFS.n === 10 ? (p.len || 10) : (p.len ? Math.max(4, Math.round(PREFS.n * 0.8)) : PREFS.n);
   const make = () => buildQs(m, p, shuffle(pool(p)).slice(0, len));
   startSession(`${m.emoji} ${m.title} · ${p.name}`, make(), m.id + '/' + p.id, make, () => showModule(m.id, 'practica'));
 }
@@ -933,7 +1012,7 @@ function showResults() {
   window.scrollTo(0, 0);
 }
 function confetti() {
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!PREFS.motion || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
   const em = ['⭐', '🎉', '✨', '🌟', '🎈'];
   for (let i = 0; i < 28; i++) {
     const s = document.createElement('span');
@@ -988,6 +1067,7 @@ app.addEventListener('click', e => {
   else if (t.dataset.start) { const [m, p] = t.dataset.start.split('/'); startPractice(m, p); }
 });
 document.addEventListener('keydown', e => {
+  if (DLG.open) return;
   if (!$('#modal').hidden) { if (e.key === 'Escape') closePlayers(); return; }
   if (view.name !== 'quiz' || e.ctrlKey || e.metaKey || e.altKey) return;
   if (/^[1-9]$/.test(e.key)) {
@@ -996,6 +1076,112 @@ document.addEventListener('keydown', e => {
     if (btn) { e.preventDefault(); btn.click(); }
   } else if (e.key === 'Enter' && $('#nextBtn') && document.activeElement !== $('#nextBtn')) { e.preventDefault(); $('#nextBtn').click(); }
 });
+
+/* ============ Preferencias de la interfaz ============ */
+var PREFS; // (declarada con var para que exista antes de su uso en speak/startPractice)
+var DLG = { open: null, opener: null };
+const PKEY = 'ortografia-en-juego-prefs';
+const PREF_OPTS = {
+  theme: { label: 'Tema', opts: [['auto', '🖥️ Automático'], ['light', '☀️ Claro'], ['dark', '🌙 Oscuro'], ['sepia', '📜 Sepia']] },
+  accent: { label: 'Color principal', opts: [['violeta', 'Violeta'], ['azul', 'Azul'], ['verde', 'Verde'], ['rosa', 'Rosa'], ['naranja', 'Naranja']] },
+  size: { label: 'Tamaño de letra', opts: [['s', 'A−'], ['m', 'A'], ['l', 'A+'], ['xl', 'A++']] },
+  font: { label: 'Tipo de letra', opts: [['redondeada', 'Redondeada'], ['lectura', 'Fácil de leer'], ['clasica', 'Clásica']] },
+  n: { label: 'Preguntas por ronda', opts: [[5, '5'], [10, '10'], [15, '15'], [20, '20']] },
+  voice: { label: 'Voz (botón 🔊)', opts: [[true, '🔊 Activada'], [false, '🔇 Desactivada']] },
+  rate: { label: 'Velocidad de la voz', opts: [['normal', 'Normal'], ['lenta', '🐢 Lenta']] },
+  motion: { label: 'Animaciones y confeti', opts: [[true, '✨ Sí'], [false, 'Sin animaciones']] }
+};
+const PDEF = { theme: 'auto', accent: 'violeta', size: 'm', font: 'redondeada', n: 10, voice: true, rate: 'normal', motion: true };
+const ACCENTS = { violeta: ['#6741d9', '#845ef7'], azul: ['#1c7ed6', '#339af0'], verde: ['#2b8a3e', '#37b24d'], rosa: ['#c2255c', '#e64980'], naranja: ['#d9480f', '#f76707'] };
+const SIZES = { s: '15px', m: '16px', l: '18px', xl: '20px' };
+const FONTS = {
+  redondeada: ['"Nunito",ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,Roboto,sans-serif', '1.5', 'normal'],
+  lectura: ['Verdana,Tahoma,"Segoe UI",system-ui,sans-serif', '1.7', '.02em'],
+  clasica: ['Georgia,"Times New Roman",serif', '1.6', 'normal']
+};
+PREFS = { ...PDEF };
+try {
+  const saved = JSON.parse(localStorage.getItem(PKEY) || '{}');
+  for (const k in PDEF) if (saved && PREF_OPTS[k].opts.some(o => o[0] === saved[k])) PREFS[k] = saved[k];
+} catch (e) { /* sin almacenamiento */ }
+const darkMQ = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+function applyPrefs() {
+  const root = document.documentElement;
+  const theme = PREFS.theme === 'auto' ? (darkMQ && darkMQ.matches ? 'dark' : 'light') : PREFS.theme;
+  root.dataset.theme = theme;
+  root.style.setProperty('--accent', ACCENTS[PREFS.accent][theme === 'dark' ? 1 : 0]);
+  root.style.setProperty('--root', SIZES[PREFS.size]);
+  const f = FONTS[PREFS.font];
+  root.style.setProperty('--font', f[0]); root.style.setProperty('--lh', f[1]); root.style.setProperty('--ls', f[2]);
+  root.classList.toggle('calm', !PREFS.motion);
+  root.classList.toggle('novoice', !PREFS.voice);
+  const meta = document.querySelector('meta[name="color-scheme"]');
+  if (meta) meta.content = theme === 'dark' ? 'dark' : 'light';
+}
+function savePrefs() { try { localStorage.setItem(PKEY, JSON.stringify(PREFS)); } catch (e) { /* ignorar */ } }
+if (darkMQ) { const onMQ = () => { if (PREFS.theme === 'auto') applyPrefs(); }; darkMQ.addEventListener ? darkMQ.addEventListener('change', onMQ) : darkMQ.addListener(onMQ); }
+applyPrefs();
+
+function renderPrefs() {
+  let h = '';
+  for (const [k, def] of Object.entries(PREF_OPTS)) {
+    if (k === 'rate' && !canSpeak) continue;
+    if (k === 'voice' && !canSpeak) continue;
+    h += `<fieldset class="pgroup"><legend>${def.label}</legend><div class="seg">` + def.opts.map(([v, lab]) => {
+      const dot = k === 'accent' ? `<i class="dot" style="background:${ACCENTS[v][0]}" aria-hidden="true"></i>` : '';
+      return `<label><input type="radio" name="pref-${k}" value="${esc(String(v))}"${PREFS[k] === v ? ' checked' : ''}><span>${dot}${esc(lab)}</span></label>`;
+    }).join('') + `</div></fieldset>`;
+  }
+  if (!canSpeak) h += `<p class="muted"><small>Este navegador no tiene voz sintetizada, por eso no aparecen las opciones de voz.</small></p>`;
+  $('#prefsBody').innerHTML = h;
+}
+$('#prefsBody').addEventListener('change', e => {
+  const inp = e.target;
+  if (!inp.name || !inp.name.startsWith('pref-')) return;
+  const k = inp.name.slice(5);
+  const opt = PREF_OPTS[k].opts.find(o => String(o[0]) === inp.value);
+  if (!opt) return;
+  PREFS[k] = opt[0];
+  if (k === 'voice' && !PREFS.voice && canSpeak) { try { speechSynthesis.cancel(); } catch (err) { /* nada */ } }
+  savePrefs(); applyPrefs();
+});
+$('#prefsReset').onclick = () => { PREFS = { ...PDEF }; savePrefs(); applyPrefs(); renderPrefs(); const first = $('#prefsBody input:checked'); if (first) first.focus(); };
+
+/* ============ Ventanas (sello y panel) con teclado accesible ============ */
+const FOCUSABLE = 'button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])';
+function openDialog(el, focusEl) {
+  if (DLG.open) closeDialog();
+  DLG.opener = document.activeElement;
+  el.hidden = false; DLG.open = el;
+  document.documentElement.classList.add('lock');
+  const box = el.querySelector('.mbox'); if (box) box.scrollTop = 0;
+  (focusEl || el.querySelector(FOCUSABLE)).focus();
+}
+function closeDialog() {
+  const el = DLG.open; if (!el) return;
+  el.hidden = true; DLG.open = null;
+  document.documentElement.classList.remove('lock');
+  if (DLG.opener && document.contains(DLG.opener)) DLG.opener.focus();
+}
+for (const id of ['faith', 'prefs']) {
+  const el = $('#' + id);
+  el.addEventListener('click', e => { if (e.target === el || e.target.closest('[data-close]')) closeDialog(); });
+}
+document.addEventListener('keydown', e => {
+  if (!DLG.open) return;
+  if (e.key === 'Escape') { e.preventDefault(); closeDialog(); return; }
+  if (e.key === 'Tab') {
+    const f = $$(FOCUSABLE, DLG.open).filter(x => x.offsetParent !== null || x.type === 'radio');
+    const tabbable = f.filter(x => x.type !== 'radio' || x.checked);
+    if (!tabbable.length) return;
+    const first = tabbable[0], last = tabbable[tabbable.length - 1];
+    if (!DLG.open.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+$('#faithBtn').onclick = () => openDialog($('#faith'), $('#faith .xclose'));
+$('#prefsBtn').onclick = () => { renderPrefs(); openDialog($('#prefs'), $('#prefsBody input:checked')); };
 
 /* ============ Inicio ============ */
 refreshTop();
