@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ortografía en juego · Practica la ortografía del español</title>
+<meta name="description" content="Teoría visual y ejercicios para practicar la ortografía del español: tildes, b/v, g/j, h, ll/y, c/z, r/rr, m/n y palabras que suenan igual.">
+<style>
+:root{
+  --bg:#f6f4ff; --card:#ffffff; --ink:#24213a; --muted:#6b6785; --line:#e4e0f5;
+  --ok:#2f9e44; --okbg:#e6f7ea; --ko:#e03131; --kobg:#fdeaea; --accent:#6741d9;
+  --aguda:#e8590c; --llana:#1c7ed6; --esdrujula:#2f9e44; --sobres:#7048e8;
+  --r:18px; --shadow:0 4px 18px rgba(60,40,140,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:"Nunito",ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:17px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.brand{border:0;background:none;font-weight:900;font-size:1.25rem;padding:4px 6px;border-radius:10px}
+.brand span{color:var(--accent)}
+.topright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lvl{display:flex;background:#efebff;border-radius:999px;padding:3px}
+.lvl button{border:0;background:none;padding:6px 12px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--muted)}
+.lvl button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem}
+main{max-width:980px;margin:0 auto;padding:18px 16px 60px}
+h1,h2,h3{line-height:1.2;margin:.2em 0 .5em}
+h1{font-size:1.8rem} h2{font-size:1.4rem} h3{font-size:1.12rem}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+.hello{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hello .big{font-size:3rem}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.mod{border:0;text-align:left;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:16px;border-top:6px solid var(--c);transition:transform .12s}
+.mod:hover{transform:translateY(-3px)}
+.mod .em{font-size:2rem}
+.mod b{display:block;font-size:1.1rem;margin:.2em 0}
+.mod small{color:var(--muted);display:block}
+.stars{color:#f59f00;font-size:.95rem;margin-top:6px;letter-spacing:1px}
+.exam{background:linear-gradient(135deg,#6741d9,#d6336c);color:#fff;border-top:0}
+.exam small{color:#f1eaff}
+.back{border:0;background:none;color:var(--accent);font-weight:800;padding:4px 0;margin-bottom:6px}
+.modhead{display:flex;gap:12px;align-items:center;border-left:8px solid var(--c);padding-left:12px;margin-bottom:12px}
+.modhead .em{font-size:2.4rem}
+.tabs{display:flex;gap:8px;margin:8px 0 16px}
+.tabs button{flex:1;border:2px solid var(--c);background:#fff;border-radius:14px;padding:10px;font-weight:800}
+.tabs button.on{background:var(--c);color:#fff}
+.intro{font-size:1.05rem}
+.trick{background:#fff8db;border:2px dashed #f2c94c;border-radius:14px;padding:12px 14px;margin:12px 0}
+.rule{border-left:6px solid var(--c);background:#fff;border-radius:12px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.rule h3{margin:0 0 4px;font-size:1.05rem}
+.ex{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.word{border:1px solid var(--line);background:#faf9ff;border-radius:10px;padding:3px 10px;font-size:1.05rem}
+button.word:hover{background:#efebff}
+.hl{color:var(--c,#6741d9);font-weight:900;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:3px}
+.sent{font-size:1.02rem;margin:4px 0}
+.plist{display:grid;gap:12px}
+.pbtn{display:flex;gap:14px;align-items:center;text-align:left;border:2px solid var(--line);background:#fff;border-radius:var(--r);padding:14px 16px}
+.pbtn:hover{border-color:var(--c)}
+.pbtn .em{font-size:2rem}
+.pbtn b{display:block}
+.pbtn small{color:var(--muted)}
+.cta{display:inline-block;border:0;background:var(--c,#6741d9);color:#fff;font-weight:800;border-radius:14px;padding:12px 20px;margin-top:8px}
+/* teoría de acentos */
+.sec{margin:18px 0}
+.sylls{display:inline-flex;gap:4px;align-items:center;margin:4px 8px 4px 0;border:0;background:none;padding:0}
+.syl{display:inline-block;padding:4px 10px;border-radius:10px;background:#eef0f6;font-weight:700;font-size:1.1rem}
+.syl.ton{color:#fff;background:var(--t,#6741d9);transform:scale(1.08)}
+.postable{width:100%;border-collapse:separate;border-spacing:4px;font-size:.95rem}
+.postable th{font-size:.78rem;color:var(--muted);font-weight:700;text-align:center}
+.postable td{text-align:center;padding:6px 2px;border-radius:10px;background:#f4f3fa}
+.postable td.lab{text-align:left;background:none;font-weight:900;color:var(--t);white-space:nowrap}
+.postable td.ton{background:var(--t);color:#fff;font-weight:900}
+.postable td.empty{background:none}
+.tcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.tcard{border-radius:14px;padding:14px;border:3px solid var(--t);background:#fff}
+.tcard h3{color:var(--t);margin-bottom:6px}
+.yes{color:var(--ok);font-weight:800}.no{color:var(--ko);font-weight:800}
+.badge{display:inline-block;background:var(--ink);color:#fff;border-radius:10px;padding:2px 10px;font-weight:900;letter-spacing:1px}
+.flow{display:grid;gap:8px;justify-items:center;text-align:center}
+.fstep{background:#efebff;border-radius:12px;padding:8px 16px;font-weight:800;max-width:520px}
+.farrow{color:var(--muted);font-size:1.3rem;line-height:1}
+.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;width:100%}
+.fcol{border:3px solid var(--t);border-radius:14px;padding:10px;background:#fff}
+.fcol b{color:var(--t)}
+.vow{display:inline-block;width:2.2em;text-align:center;border-radius:10px;padding:4px 0;font-weight:900;font-size:1.2rem;margin:2px}
+.vow.a{background:#ffe3e3;color:#c92a2a}.vow.c{background:#e7f5ff;color:#1864ab}
+table.pairs{border-collapse:collapse;width:100%;font-size:.98rem}
+table.pairs td,table.pairs th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.pairs th{color:var(--muted);font-size:.85rem}
+/* quiz */
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.bar{height:12px;background:#e9e6f7;border-radius:999px;overflow:hidden;flex:1;min-width:140px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#7950f2,#d6336c);transition:width .3s}
+.score{font-weight:800;white-space:nowrap}
+.qcard{text-align:center;padding:24px 18px}
+.qlabel{color:var(--muted);font-weight:700;margin-bottom:6px}
+.qword{font-size:clamp(2rem,7vw,3.2rem);font-weight:900;letter-spacing:1px;margin:10px 0;word-break:break-word}
+.blank{display:inline-block;min-width:1.1em;border-bottom:5px solid var(--accent);color:var(--accent);margin:0 1px}
+.blank.filled{border-bottom-width:3px}
+.blank.filled{border-color:var(--ok);color:var(--ok)}
+.blank.filled.empty{min-width:.6em}
+.qsent{font-size:clamp(1.25rem,4.5vw,1.7rem);font-weight:800;margin:14px 0}
+.qsent .blank{min-width:2.5em}
+.opts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:16px 0 6px}
+.opt{min-width:110px;border:3px solid var(--line);background:#fff;border-radius:16px;padding:12px 20px;font-size:1.5rem;font-weight:900;transition:transform .08s}
+.opt.small{font-size:1.15rem}
+.opt:hover:not(:disabled){border-color:var(--accent);transform:translateY(-2px)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+.opt.wrong{border-color:var(--ko);background:var(--kobg);color:var(--ko)}
+.opt.dim{opacity:.45}
+.opt kbd{display:block;font-size:.7rem;color:var(--muted);font-family:inherit;font-weight:700}
+.speak{border:0;background:#efebff;border-radius:999px;padding:8px 14px;font-weight:800}
+.fb{border-radius:14px;padding:12px 14px;margin-top:14px;text-align:left}
+.fb.ok{background:var(--okbg);border:2px solid #b2f2bb}
+.fb.ko{background:var(--kobg);border:2px solid #ffc9c9}
+.fb .rl{margin-top:6px;font-size:.98rem}
+.next{display:block;margin:16px auto 0;border:0;background:var(--accent);color:#fff;font-weight:900;font-size:1.15rem;border-radius:14px;padding:12px 28px}
+.step{border-top:2px dashed var(--line);margin-top:16px;padding-top:12px}
+.step h3{font-size:1.05rem}
+.sylbtn{font-size:clamp(1.4rem,6vw,2.2rem);min-width:70px;letter-spacing:1px}
+.sylbtn.opt.right{background:var(--ok);color:#fff}
+.reveal{font-size:2rem;font-weight:900;margin:8px 0}
+.res{text-align:center}
+.res .bigstars{font-size:3rem;letter-spacing:6px}
+.res .pct{font-size:2.4rem;font-weight:900}
+.mist{text-align:left;margin-top:12px}
+.mist li{margin:4px 0}
+.rbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.rbtns button{border:0;border-radius:14px;padding:12px 18px;font-weight:800;background:#efebff}
+.rbtns button.main{background:var(--accent);color:#fff}
+.streak{display:inline-block;background:#fff4e6;color:#d9480f;border-radius:999px;padding:2px 10px;font-weight:800;font-size:.9rem}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(30,20,60,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal[hidden]{display:none}
+.mbox{background:#fff;border-radius:22px;padding:22px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.plrow{display:flex;gap:6px;margin:6px 0}
+.plrow .pl{flex:1;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:800}
+.plrow .pl.cur{border-color:var(--accent);background:#f3f0ff}
+.plrow .del{border:0;background:#fff0f0;border-radius:12px;padding:0 12px}
+.newpl{display:flex;gap:6px;margin-top:12px}
+.newpl input{flex:1;font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px 12px}
+.newpl button{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:0 16px;font-weight:800}
+.guest{border:0;background:none;color:var(--muted);text-decoration:underline;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
+.confetti{position:fixed;top:-40px;font-size:28px;pointer-events:none;z-index:60;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){.confetti{display:none}.mod,.opt,.bar i{transition:none}}
+@media (max-width:520px){body{font-size:16px}.opt{min-width:90px;padding:10px 14px}.brand{font-size:1.05rem}}
+</style>
+</head>
+<body>
+<header class="top">
+  <button id="homeBtn" class="brand" aria-label="Ir al inicio">✏️ Ortografía <span>en juego</span></button>
+  <div class="topright">
+    <div class="lvl" role="group" aria-label="Nivel de dificultad">
+      <button type="button" data-lvl="1" title="Para empezar (8-9 años)">🌱 Básico</button>
+      <button type="button" data-lvl="2" title="Más palabras y reglas (10 años en adelante)">🚀 Avanzado</button>
+    </div>
+    <button type="button" id="playerBtn" class="chip">👤 <span id="playerName">Invitado</span> · ⭐ <span id="playerStars">0</span></button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="mbox">
+    <h2 id="mtitle">¿Quién va a practicar?</h2>
+    <div id="plist"></div>
+    <form class="newpl" id="newpl">
+      <input id="newname" maxlength="20" placeholder="Escribe tu nombre" autocomplete="off" aria-label="Nombre nuevo">
+      <button type="submit">Añadir</button>
+    </form>
+    <button type="button" class="guest" id="guestBtn">Practicar como invitado</button>
+  </div>
+</div>
+
+<footer>Reglas basadas en la <i>Ortografía de la lengua española</i> (RAE, 2010). Tu progreso se guarda solo en este navegador.</footer>
+
+<script>
+'use strict';
+/* ============ Utilidades ============ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const stripAcc = s => s.normalize('NFD').replace(/́/g, '').normalize('NFC'); // quita solo la tilde (respeta ñ y ü)
+const hasAcc = s => s.normalize('NFD').includes('́');
+
+/* ============ Voz ============ */
+let esVoice = null;
+function pickVoice() {
+  if (!('speechSynthesis' in window)) return;
+  const vs = speechSynthesis.getVoices();
+  esVoice = vs.find(v => v.lang === 'es-ES') || vs.find(v => /^es/i.test(v.lang)) || null;
+}
+if ('speechSynthesis' in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(text) {
+  if (!('speechSynthesis' in window)) return;
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'es-ES'; u.rate = 0.8;
+    if (esVoice) u.voice = esVoice;
+    speechSynthesis.speak(u);
+  } catch (e) { /* sin voz disponible */ }
+}
+const canSpeak = 'speechSynthesis' in window;
+
+/* ============ Datos: ACENTOS ============ */
+// Sílabas separadas con "-". Si la palabra no lleva tilde, "*" marca la sílaba tónica.
+const ACC1 = 'can-ción ca-fé so-fá ja-más a-vión ra-tón li-món ca-mión ja-bón sar-tén pa-pá be-bé me-nú al-go-dón a-quí tam-bién ' +
+  're-*loj pa-*red a-*mor ciu-*dad fe-*liz can-*tar pa-*pel ver-*dad es-pa-*ñol a-*rroz ca-ra-*col co-*mer a-*zul ' +
+  'ár-bol lá-piz fá-cil cés-ped dé-bil ál-bum cár-cel mó-vil a-zú-car ú-til dó-lar fút-bol ' +
+  '*ca-sa *me-sa *li-bro za-*pa-to ve-*ra-no *jo-ven e-*xa-men *mar-tes *can-tan *or-den ven-*ta-na *lu-nes *flo-res *vier-nes ' +
+  'mú-si-ca plá-ta-no rá-pi-do pá-ja-ro lám-pa-ra mé-di-co sá-ba-do miér-co-les brú-ju-la ma-te-má-ti-cas te-lé-fo-no cá-ma-ra re-lám-pa-go pé-ta-lo lá-gri-ma mur-cié-la-go';
+const ACC2 = 'co-li-brí com-pás ma-ni-quí dó-cil ca-dá-ver re-*su-men jó-ve-nes e-xá-me-nes ár-bo-les có-mi-co ' +
+  'dí-ga-me-lo cuén-ta-se-lo ex-plí-ca-se-lo có-me-te-lo llé-va-te-lo re-gá-la-se-la';
+function parseAcc(str, lvl) {
+  const parts = str.split('-');
+  let k = parts.findIndex(p => p.startsWith('*'));
+  const syl = parts.map(p => p.replace('*', ''));
+  if (k < 0) k = syl.findIndex(hasAcc);
+  return { syl, k, lvl };
+}
+const ACC = [...ACC1.split(' ').map(s => parseAcc(s, 1)), ...ACC2.split(' ').map(s => parseAcc(s, 2))];
+
+const TYPES = {
+  aguda: { name: 'Aguda', color: 'var(--aguda)', pos: 'última' },
+  llana: { name: 'Llana', color: 'var(--llana)', pos: 'penúltima' },
+  esdrujula: { name: 'Esdrújula', color: 'var(--esdrujula)', pos: 'antepenúltima' },
+  sobresdrujula: { name: 'Sobresdrújula', color: 'var(--sobres)', pos: 'anterior a la antepenúltima' }
+};
+function accInfo(it) {
+  const n = it.syl.length, fromEnd = n - 1 - it.k;
+  const type = fromEnd === 0 ? 'aguda' : fromEnd === 1 ? 'llana' : fromEnd === 2 ? 'esdrujula' : 'sobresdrujula';
+  const word = it.syl.join('');
+  const plain = stripAcc(word);
+  const last = plain.slice(-1).toLowerCase();
+  const vowel = 'aeiou'.includes(last);
+  const nsv = vowel || last === 'n' || last === 's';
+  const tilde = hasAcc(word);
+  const expected = type === 'aguda' ? nsv : type === 'llana' ? !nsv : true;
+  const endTxt = vowel ? `en vocal («${last}»)` : `en «${last}»`;
+  let expl;
+  if (type === 'aguda') expl = nsv
+    ? `Es <b>aguda</b> y termina ${endTxt}. Las agudas llevan tilde cuando terminan en N, S o vocal → <b>lleva tilde</b>.`
+    : `Es <b>aguda</b> y termina ${endTxt}, que no es N, S ni vocal → <b>no lleva tilde</b>.`;
+  else if (type === 'llana') expl = nsv
+    ? `Es <b>llana</b> y termina ${endTxt}. Las llanas que terminan en N, S o vocal <b>no llevan tilde</b>.`
+    : `Es <b>llana</b> y termina ${endTxt}, que no es N, S ni vocal → <b>lleva tilde</b>.`;
+  else expl = `Es <b>${TYPES[type].name.toLowerCase()}</b>: ¡las ${type === 'esdrujula' ? 'esdrújulas' : 'sobresdrújulas'} llevan tilde <b>siempre</b>!`;
+  return { type, word, plain, tilde, expected, expl };
+}
+
+/* ============ Datos: MÓDULOS ============ */
+const HIATOS = [
+  { a: 'María', w: ['Maria'], r: 'hiato', sy: 'Ma-rí-a' },
+  { a: 'país', w: ['pais'], r: 'hiato', sy: 'pa-ís' },
+  { a: 'día', w: ['dia'], r: 'hiato', sy: 'dí-a' },
+  { a: 'tío', w: ['tio'], r: 'hiato', sy: 'tí-o' },
+  { a: 'búho', w: ['buho'], r: 'hiato', sy: 'bú-ho' },
+  { a: 'baúl', w: ['baul'], r: 'hiato', sy: 'ba-úl' },
+  { a: 'oído', w: ['oido'], r: 'hiato', sy: 'o-í-do' },
+  { a: 'reír', w: ['reir'], r: 'hiato', sy: 're-ír' },
+  { a: 'maíz', w: ['maiz'], r: 'hiato', sy: 'ma-íz' },
+  { a: 'sandía', w: ['sandia'], r: 'hiato', sy: 'san-dí-a' },
+  { a: 'policía', w: ['policia'], r: 'hiato', sy: 'po-li-cí-a' },
+  { a: 'grúa', w: ['grua'], r: 'hiato', sy: 'grú-a' },
+  { a: 'ataúd', w: ['ataud'], r: 'hiato', sy: 'a-ta-úd', n: 2 },
+  { a: 'panadería', w: ['panaderia'], r: 'hiato', sy: 'pa-na-de-rí-a', n: 2 },
+  { a: 'leído', w: ['leido'], r: 'hiato', sy: 'le-í-do', n: 2 },
+  { a: 'cielo', w: ['cíelo'], r: 'dipt', sy: 'cie-lo' },
+  { a: 'piano', w: ['píano'], r: 'dipt', sy: 'pia-no' },
+  { a: 'jaula', w: ['jáula'], r: 'dipt', sy: 'jau-la' },
+  { a: 'cuidado', w: ['cuídado'], r: 'dipt', sy: 'cui-da-do', n: 2 },
+  { a: 'camión', w: ['camíon', 'camion'], r: 'dipt2', sy: 'ca-mión', n: 2 },
+  { a: 'también', w: ['tambíen', 'tambien'], r: 'dipt2', sy: 'tam-bién', n: 2 },
+  { a: 'fue', w: ['fué'], r: 'mono', n: 2 },
+  { a: 'fui', w: ['fuí'], r: 'mono', n: 2 },
+  { a: 'dio', w: ['dió'], r: 'mono', n: 2 },
+  { a: 'vio', w: ['vió'], r: 'mono', n: 2 },
+  { a: 'pie', w: ['pié'], r: 'mono', n: 2 }
+];
+const DIACRI = [
+  { s: '___ perro de Ana es muy juguetón.', o: ['El', 'Él'], r: 'el' },
+  { s: 'Ese bocadillo es para ___.', o: ['él', 'el'], r: 'el' },
+  { s: '¿Has traído ___ estuche?', o: ['tu', 'tú'], r: 'tu' },
+  { s: '___ eres mi mejor amiga.', o: ['Tú', 'Tu'], r: 'tu' },
+  { s: '¿Este regalo es para ___?', o: ['mí', 'mi'], r: 'mi' },
+  { s: '___ casa tiene un jardín.', o: ['Mi', 'Mí'], r: 'mi' },
+  { s: 'A mi madre le gusta el ___ con limón.', o: ['té', 'te'], r: 'te' },
+  { s: '___ quiero mucho, mamá.', o: ['Te', 'Té'], r: 'te' },
+  { s: 'Yo no ___ la respuesta.', o: ['sé', 'se'], r: 'se' },
+  { s: 'Mi hermano ___ lava los dientes.', o: ['se', 'sé'], r: 'se' },
+  { s: 'Quiero ___ macarrones, por favor.', o: ['más', 'mas'], r: 'mas' },
+  { s: '___ llueve, no iremos al parque.', o: ['Si', 'Sí'], r: 'si' },
+  { s: '—¿Quieres helado? —¡___, por favor!', o: ['Sí', 'Si'], r: 'si' },
+  { s: 'Quiero un vaso ___ agua.', o: ['de', 'dé'], r: 'de' },
+  { s: 'Dile que te ___ la pelota.', o: ['dé', 'de'], r: 'de', n: 2 },
+  { s: '¿___ hora es?', o: ['Qué', 'Que'], r: 'inter' },
+  { s: 'Creo ___ va a llover.', o: ['que', 'qué'], r: 'inter' },
+  { s: '¿___ vives?', o: ['Dónde', 'Donde'], r: 'inter' },
+  { s: 'Esta es la casa ___ vivo.', o: ['donde', 'dónde'], r: 'inter' },
+  { s: '¿___ te llamas?', o: ['Cómo', 'Como'], r: 'inter' },
+  { s: 'Yo ___ mucha fruta.', o: ['como', 'cómo'], r: 'inter' },
+  { s: '¿___ es tu cumpleaños?', o: ['Cuándo', 'Cuando'], r: 'inter' },
+  { s: 'Te llamo ___ llegue a casa.', o: ['cuando', 'cuándo'], r: 'inter' },
+  { s: '¿___ ha llamado a la puerta?', o: ['Quién', 'Quien'], r: 'inter', n: 2 },
+  { s: 'No sé ___ hacer.', o: ['qué', 'que'], r: 'inter2', n: 2 },
+  { s: '¿___ no vienes al parque?', o: ['Por qué', 'Porque', 'Porqué'], r: 'porque' },
+  { s: 'No voy ___ estoy cansada.', o: ['porque', 'por qué', 'porqué'], r: 'porque' },
+  { s: 'No sé ___ está triste.', o: ['por qué', 'porque'], r: 'inter2', n: 2 }
+];
+
+const MODULES = [
+  {
+    id: 'acentos', title: 'Acentos y tildes', emoji: '🎵', color: '#e8590c',
+    short: 'Agudas, llanas, esdrújulas, hiatos y tilde diacrítica',
+    intro: 'Todas las palabras tienen una sílaba que suena <b>más fuerte</b>: la <b>sílaba tónica</b>. A veces, sobre ella se escribe una rayita: la <b>tilde</b> ( ´ ). Aprende a encontrar la sílaba tónica y sabrás cuándo poner tilde.',
+    custom: true, autoRules: false,
+    rules: {
+      hiato: { t: 'Hiato con I o U fuerte', d: 'Si la <b>i</b> o la <b>u</b> es la sílaba tónica y va junto a <b>a, e, o</b>, se separan en sílabas distintas y la i/u lleva tilde <b>siempre</b>, aunque la regla general diga lo contrario.' },
+      dipt: { t: 'Diptongo', d: 'En un diptongo las dos vocales van en la misma sílaba y se aplican las reglas normales. Esta palabra es llana y termina en vocal → no lleva tilde.' },
+      dipt2: { t: 'Tilde en un diptongo', d: 'Si un diptongo lleva tilde, se pone sobre la vocal abierta (<b>a, e, o</b>): ca-mión, tam-bién.' },
+      mono: { t: 'Monosílabos', d: 'Las palabras de <b>una sola sílaba</b> no llevan tilde (fue, fui, dio, vio, pie), salvo las de la tilde diacrítica (él, tú, sé…).' },
+      el: { t: 'Él / el', d: '<b>Él</b> (con tilde) es una persona. <b>El</b> (sin tilde) va delante de un nombre: el perro.' },
+      tu: { t: 'Tú / tu', d: '<b>Tú</b> (con tilde) es una persona. <b>Tu</b> (sin tilde) dice que algo es tuyo: tu mochila.' },
+      mi: { t: 'Mí / mi', d: '<b>Mí</b> (con tilde) es una persona: para mí. <b>Mi</b> (sin tilde) dice que algo es mío: mi casa.' },
+      te: { t: 'Té / te', d: '<b>Té</b> (con tilde) es la bebida. <b>Te</b> (sin tilde) es un pronombre: te quiero.' },
+      se: { t: 'Sé / se', d: '<b>Sé</b> (con tilde) es del verbo saber (yo sé) o ser (sé bueno). <b>Se</b> (sin tilde) es un pronombre: se lava.' },
+      mas: { t: 'Más / mas', d: '<b>Más</b> (con tilde) indica cantidad. <b>Mas</b> (sin tilde) significa «pero» y casi no se usa.' },
+      si: { t: 'Sí / si', d: '<b>Sí</b> (con tilde) es afirmar: ¡sí, quiero! <b>Si</b> (sin tilde) pone una condición: si llueve…' },
+      de: { t: 'Dé / de', d: '<b>Dé</b> (con tilde) es del verbo dar. <b>De</b> (sin tilde) es una preposición: vaso de agua.' },
+      inter: { t: 'Palabras para preguntar', d: '<b>Qué, cómo, dónde, cuándo, quién, cuál, cuánto</b> llevan tilde cuando <b>preguntan o exclaman</b>. Si no preguntan, van sin tilde.' },
+      inter2: { t: 'Preguntas escondidas', d: 'También llevan tilde dentro de una frase cuando hay una pregunta escondida: <i>No sé qué hacer</i>, <i>No sé por qué está triste</i>.' },
+      porque: { t: 'Por qué / porque / porqué', d: '<b>¿Por qué?</b> (separado y con tilde) sirve para preguntar. <b>Porque</b> (junto y sin tilde) sirve para responder. <b>El porqué</b> es «el motivo».' }
+    },
+    practices: [
+      { id: 'tildes', name: 'Entrenador de tildes', icon: '🎯', desc: 'Busca la sílaba tónica, di qué tipo de palabra es y decide si lleva tilde.', kind: 'acc', items: ACC, len: 8 },
+      { id: 'hiatos', name: 'Hiatos, diptongos y monosílabos', icon: '🔍', desc: '¿Cuál está bien escrita?', kind: 'choose', items: HIATOS },
+      { id: 'diacri', name: 'Tilde diacrítica y preguntas', icon: '💬', desc: 'él/el, tú/tu, sí/si, qué/que, por qué/porque…', kind: 'sent', items: DIACRI }
+    ]
+  },
+  {
+    id: 'bv', title: 'B y V', emoji: '🐝', color: '#1c7ed6', short: 'Barco, vaso, cantaba, invierno…',
+    intro: 'La <b>b</b> y la <b>v</b> suenan igual, así que tenemos que fijarnos en las reglas. ¡Muchas palabras siguen alguna!',
+    trick: 'Si dudas, piensa en otra palabra de la misma familia: <i>escribir → escribo, escritura</i>; <i>nuevo → nueva, novedad</i>.',
+    opts: ['b', 'v'],
+    rules: {
+      mb: { t: 'MB', d: 'Después de <b>m</b> siempre se escribe <b>b</b>.' },
+      blbr: { t: 'BL y BR', d: 'Delante de <b>l</b> y <b>r</b> se escribe <b>b</b>: bl, br.' },
+      bir: { t: 'Verbos en -BIR', d: 'Los verbos que terminan en <b>-bir</b> se escriben con b. Excepciones: <b>hervir, servir y vivir</b>.' },
+      aba: { t: '-ABA, -ABAS, -ABAN', d: 'El pasado de los verbos en -ar termina en <b>-aba</b> (cantaba, jugábamos). También <b>iba, ibas, íbamos</b>.' },
+      bu: { t: 'BU-, BUR-, BUS-', d: 'Las palabras que empiezan por <b>bu-, bur-, bus-</b> llevan b.' },
+      bilidad: { t: '-BILIDAD', d: 'Las palabras que terminan en <b>-bilidad</b> llevan b (excepto movilidad y civilidad).' },
+      bi: { t: 'BI-, BIS-, BIZ- («dos»)', d: 'Cuando significan «dos» o «dos veces» se escriben con b: bicicleta (dos ruedas).' },
+      nv: { t: 'NV', d: 'Después de <b>n</b> siempre se escribe <b>v</b>.' },
+      adj: { t: 'Adjetivos -AVO, -AVE, -EVO, -EVE, -IVO, -IVA', d: 'Los adjetivos con estas terminaciones llevan v: nuevo, suave, activo.' },
+      obv: { t: 'ADV-, OBV-, SUBV-', d: 'Después de <b>ad-, ob- y sub-</b> se escribe v: adverbio, obvio.' },
+      uve: { t: 'ESTUVE, ANDUVE, TUVE', d: 'El pasado de <b>estar, andar y tener</b> se escribe con v.' },
+      ir: { t: 'Verbo IR', d: 'Las formas del verbo ir con sonido B llevan v: <b>voy, vas, va, vamos, van</b>. (Pero iba, ibas… con b).' },
+      eva: { t: 'EVA-, EVE-, EVI-, EVO-', d: 'Las palabras que empiezan así llevan v (excepto ébano).' },
+      ivoro: { t: '-ÍVORO, -ÍVORA', d: 'Llevan v: herbívoro, carnívora. Excepción: víbora.' },
+      mem: { t: 'Sin regla', d: 'Estas palabras no siguen ninguna regla: ¡hay que memorizarlas leyendo mucho!' }
+    },
+    items: [
+      ['tam[b]ién', 'mb'], ['hom[b]re', 'mb'], ['som[b]rero', 'mb'], ['tam[b]or', 'mb'], ['cam[b]iar', 'mb'], ['nom[b]re', 'mb'], ['em[b]udo', 'mb', 2],
+      ['[b]lanco', 'blbr'], ['[b]razo', 'blbr'], ['li[b]ro', 'blbr'], ['ha[b]lar', 'blbr'], ['pue[b]lo', 'blbr'], ['a[b]rir', 'blbr'], ['ca[b]le', 'blbr'], ['[b]rillar', 'blbr'], ['a[b]razo', 'blbr'],
+      ['escri[b]ir', 'bir'], ['reci[b]ir', 'bir'], ['su[b]ir', 'bir'], ['descri[b]ir', 'bir', 2], ['prohi[b]ir', 'bir', 2], ['vi[v]ir', 'bir'], ['her[v]ir', 'bir', 2], ['ser[v]ir', 'bir', 2],
+      ['canta[b]a', 'aba'], ['juga[b]a', 'aba'], ['esta[b]a', 'aba'], ['salta[b]an', 'aba'], ['pinta[b]as', 'aba'], ['i[b]a', 'aba'], ['nadá[b]amos', 'aba', 2],
+      ['[b]uscar', 'bu'], ['[b]urbuja', 'bu'], ['[b]urro', 'bu'], ['[b]ueno', 'bu'], ['[b]uzón', 'bu'],
+      ['ama[b]ilidad', 'bilidad', 2], ['responsa[b]ilidad', 'bilidad', 2], ['ha[b]ilidad', 'bilidad', 2],
+      ['[b]icicleta', 'bi'], ['[b]isabuelo', 'bi'], ['[b]izcocho', 'bi'], ['[b]ilingüe', 'bi', 2],
+      ['in[v]ierno', 'nv'], ['en[v]iar', 'nv'], ['in[v]itar', 'nv'], ['in[v]ento', 'nv'], ['con[v]encer', 'nv', 2], ['en[v]idia', 'nv', 2],
+      ['octa[v]o', 'adj'], ['nue[v]o', 'adj'], ['nue[v]e', 'adj'], ['acti[v]o', 'adj'], ['deporti[v]a', 'adj'], ['sua[v]e', 'adj'], ['bre[v]e', 'adj', 2], ['atracti[v]o', 'adj', 2],
+      ['ad[v]erbio', 'obv', 2], ['ad[v]ertir', 'obv', 2], ['ob[v]io', 'obv', 2],
+      ['estu[v]e', 'uve'], ['tu[v]imos', 'uve'], ['andu[v]e', 'uve', 2], ['estu[v]ieron', 'uve', 2],
+      ['[v]oy', 'ir'], ['[v]amos', 'ir'], ['[v]as', 'ir'],
+      ['e[v]itar', 'eva', 2], ['e[v]ento', 'eva', 2], ['e[v]aporar', 'eva', 2], ['e[v]olución', 'eva', 2],
+      ['herbí[v]oro', 'ivoro', 2], ['carní[v]oro', 'ivoro', 2],
+      ['a[b]uelo', 'mem'], ['[v]entana', 'mem'], ['[b]arco', 'mem'], ['[b]oca', 'mem'], ['[b]allena', 'mem'], ['[v]olcán', 'mem']
+    ]
+  },
+  {
+    id: 'gj', title: 'G y J', emoji: '🦒', color: '#2f9e44', short: 'Gente, viaje, coger, guitarra, pingüino…',
+    intro: 'Delante de <b>e</b> e <b>i</b>, la <b>g</b> y la <b>j</b> pueden sonar igual (gente, jefe). Delante de <b>a, o, u</b> no hay duda: el sonido fuerte es siempre <b>j</b>. Y para el sonido suave de <i>gato</i> delante de e, i usamos <b>gu</b>.',
+    trick: 'Ga, go, gu suenan suave como en <i>gato</i>. Ja, jo, ju suenan fuerte como en <i>jamón</i>. ¡Solo hay que dudar con <b>ge, gi / je, ji</b>!',
+    opts: ['g', 'j'],
+    rules: {
+      jajo: { t: 'JA, JO, JU', d: 'Con <b>a, o, u</b> el sonido fuerte se escribe siempre con <b>j</b> (ga, go, gu suenan distinto).' },
+      ger: { t: 'Verbos en -GER y -GIR', d: 'Se escriben con g: coger, elegir. Excepciones: <b>tejer y crujir</b>.' },
+      gen: { t: 'GEN-', d: 'Las palabras que empiezan por <b>gen-</b> llevan g (excepto jengibre).' },
+      gia: { t: '-GIA, -GIO, -GIÓN, -GIOSO', d: 'Estas terminaciones llevan g: magia, colegio, región. Excepciones: <b>lejía, bujía</b>.' },
+      geo: { t: 'GEO- («tierra»)', d: 'Se escribe con g: geografía, geometría.' },
+      gente: { t: '-GENTE, -GENCIA', d: 'Llevan g: inteligente, agencia.' },
+      aje: { t: '-AJE y -EJE', d: 'Las palabras que terminan en <b>-aje</b> o <b>-eje</b> llevan j: viaje, garaje.' },
+      jero: { t: '-JERO, -JERA, -JERÍA', d: 'Llevan j: pasajero, relojería.' },
+      dije: { t: 'DIJE, TRAJO, CONDUJE', d: 'Si el verbo no tiene g ni j (decir, traer, conducir), las formas con sonido J se escriben con <b>j</b>.' },
+      cojo: { t: 'COGER → COJO', d: 'Los verbos en -ger/-gir cambian la g por <b>j</b> delante de <b>a</b> y <b>o</b>: coger → cojo, elegir → elijo.' },
+      gue: { t: 'GUE, GUI', d: 'Para el sonido suave de <i>gato</i> delante de <b>e, i</b> se escribe <b>gu</b> (la u no suena): guerra, guitarra.' },
+      gue2: { t: 'GÜE, GÜI (diéresis)', d: 'Si la <b>u</b> sí suena delante de e, i, se le ponen dos puntitos: <b>ü</b> (pingüino, cigüeña).' },
+      mem: { t: 'Sin regla', d: 'Estas palabras no siguen ninguna regla: ¡hay que memorizarlas!' }
+    },
+    items: [
+      ['[j]amón', 'jajo'], ['[j]ugar', 'jajo'], ['[j]oya', 'jajo'], ['o[j]o', 'jajo'], ['[j]ardín', 'jajo'], ['re[j]a', 'jajo'],
+      ['co[g]er', 'ger'], ['prote[g]er', 'ger'], ['ele[g]ir', 'ger'], ['reco[g]er', 'ger'], ['diri[g]ir', 'ger', 2], ['te[j]er', 'ger', 2],
+      ['[g]ente', 'gen'], ['[g]enial', 'gen'], ['[g]eneral', 'gen', 2],
+      ['ma[g]ia', 'gia'], ['cole[g]io', 'gia'], ['re[g]ión', 'gia', 2], ['ener[g]ía', 'gia', 2], ['reli[g]ioso', 'gia', 2], ['le[j]ía', 'gia', 2],
+      ['[g]eografía', 'geo', 2], ['[g]eometría', 'geo', 2],
+      ['inteli[g]ente', 'gente'], ['ur[g]ente', 'gente', 2], ['a[g]encia', 'gente', 2],
+      ['via[j]e', 'aje'], ['gara[j]e', 'aje'], ['paisa[j]e', 'aje'], ['mensa[j]e', 'aje'], ['equipa[j]e', 'aje', 2], ['cora[j]e', 'aje', 2],
+      ['pasa[j]ero', 'jero'], ['extran[j]ero', 'jero', 2], ['relo[j]ería', 'jero', 2], ['conse[j]ero', 'jero', 2],
+      ['di[j]e', 'dije'], ['di[j]imos', 'dije'], ['tra[j]o', 'dije', 2], ['condu[j]e', 'dije', 2],
+      ['co[j]o', 'cojo'], ['reco[j]o', 'cojo'], ['esco[j]o', 'cojo', 2], ['eli[j]o', 'cojo', 2],
+      ['[gu]itarra', 'gue', 1, ['gu', 'g']], ['[gu]erra', 'gue', 1, ['gu', 'g']], ['ju[gu]ete', 'gue', 1, ['gu', 'g', 'gü']], ['[gu]isante', 'gue', 1, ['gu', 'g']], ['hormi[gu]ero', 'gue', 2, ['gu', 'gü']],
+      ['pin[gü]ino', 'gue2', 1, ['gü', 'gu']], ['ci[gü]eña', 'gue2', 1, ['gü', 'gu']], ['ver[gü]enza', 'gue2', 2, ['gü', 'gu']], ['para[gü]ero', 'gue2', 2, ['gü', 'gu']], ['a[gü]ita', 'gue2', 2, ['gü', 'gu']],
+      ['[j]irafa', 'mem'], ['[j]efe', 'mem'], ['[g]elatina', 'mem'], ['abe[j]a', 'mem'], ['[g]irasol', 'mem'], ['[g]imnasia', 'mem', 2]
+    ]
+  },
+  {
+    id: 'h', title: 'La H', emoji: '🤫', color: '#7048e8', short: 'La letra muda: hielo, huevo, ahora…',
+    intro: 'La <b>h</b> es <b>muda</b>: no suena nada. Por eso hay que saber las reglas… ¡y no ponerla donde no va!',
+    trick: 'Busca la familia de la palabra: <i>hablar → habla, hablador</i>. ¡Pero cuidado! <i>Hueso</i> lleva h, y <i>óseo</i> no; <i>huele</i> lleva h y <i>oler</i> no.',
+    opts: ['h', ''],
+    rules: {
+      hie: { t: 'HIE-, HUE-, HUI-', d: 'Las palabras que empiezan por <b>hie-, hue-, hui-</b> llevan h. (¡Ojo! <i>oler</i> no lleva h, pero <i>huele</i> sí, porque empieza por hue-).' },
+      hum: { t: 'HUM- + vocal', d: 'Las palabras que empiezan por <b>hum-</b> seguido de vocal llevan h: humo, humano.' },
+      hipo: { t: 'HIPO-, HIPER-, HIDR-, HEXA-…', d: 'Estas partes de palabra (de origen griego) llevan h: hipopótamo, hipermercado, hexágono.' },
+      verb: { t: 'Verbos con H', d: 'Los verbos <b>haber, hacer, hablar, habitar, hallar</b>… llevan h en todas sus formas: había, hizo, hemos.' },
+      mem: { t: 'Sin regla', d: 'Estas palabras llevan h sin regla clara: ¡hay que memorizarlas!' },
+      sinh: { t: '¡No lleva H!', d: 'Esta palabra <b>no</b> lleva h. ¡Cuidado con ponerla donde no va!' }
+    },
+    items: [
+      ['[h]ielo', 'hie'], ['[h]ierba', 'hie'], ['[h]ueso', 'hie'], ['[h]uevo', 'hie'], ['[h]uir', 'hie'], ['[h]uella', 'hie'], ['[h]uerto', 'hie'], ['[h]uele', 'hie', 2],
+      ['[h]umo', 'hum'], ['[h]umano', 'hum'], ['[h]umor', 'hum'], ['[h]úmedo', 'hum', 2], ['[h]umilde', 'hum', 2],
+      ['[h]ipopótamo', 'hipo'], ['[h]ipermercado', 'hipo'], ['[h]exágono', 'hipo', 2], ['[h]idratar', 'hipo', 2],
+      ['[h]ablar', 'verb'], ['[h]acer', 'verb'], ['[h]abía', 'verb'], ['[h]izo', 'verb'], ['[h]emos', 'verb'], ['[h]abitación', 'verb'],
+      ['zana[h]oria', 'mem'], ['a[h]ora', 'mem'], ['almo[h]ada', 'mem'], ['bú[h]o', 'mem'], ['[h]ormiga', 'mem'], ['[h]ospital', 'mem'], ['[h]ambre', 'mem'], ['[h]elado', 'mem'], ['[h]ermano', 'mem'],
+      ['[]oreja', 'sinh'], ['[]ombligo', 'sinh'], ['[]uva', 'sinh'], ['[]orilla', 'sinh'], ['[]ojo', 'sinh'], ['[]arena', 'sinh'], ['[]ermita', 'sinh', 2], ['[]oler', 'sinh', 2]
+    ]
+  },
+  {
+    id: 'lly', title: 'LL e Y', emoji: '🌧️', color: '#0c8599', short: 'Pasillo, lluvia, hoy, leyó…',
+    intro: 'En casi toda España la <b>ll</b> y la <b>y</b> suenan igual. Estas reglas te ayudan a no equivocarte.',
+    trick: 'Si el verbo no tiene ll ni y (leer, caer, oír), sus formas con ese sonido llevan <b>y</b>: leyó, cayó, oyendo.',
+    opts: ['ll', 'y'],
+    rules: {
+      illo: { t: '-ILLO, -ILLA', d: 'Las palabras que terminan en <b>-illo, -illa</b> se escriben con ll.' },
+      llar: { t: 'Verbos en -LLAR, -ULLAR', d: 'Se escriben con ll: callar, brillar, aullar.' },
+      yfin: { t: 'Y al final', d: 'Al final de palabra, cuando suena como <b>i</b> después de otra vocal y no es tónica, se escribe <b>y</b>: rey, hoy, muy.' },
+      yverb: { t: 'LEYÓ, OYENDO', d: 'Si el infinitivo no tiene ll ni y (leer, oír, huir, creer), se escribe <b>y</b>. ¡Ojo! <i>cayó</i> (de caer) y <i>calló</i> (de callar) suenan igual.' },
+      mem: { t: 'Sin regla', d: 'Estas palabras no siguen ninguna regla: ¡hay que memorizarlas!' }
+    },
+    items: [
+      ['pasi[ll]o', 'illo'], ['ardi[ll]a', 'illo'], ['bombi[ll]a', 'illo'], ['cuchi[ll]o', 'illo'], ['mantequi[ll]a', 'illo'], ['zapati[ll]a', 'illo'], ['amari[ll]o', 'illo'],
+      ['ca[ll]ar', 'llar'], ['bri[ll]ar', 'llar'], ['au[ll]ar', 'llar', 2], ['mau[ll]ar', 'llar', 2], ['fa[ll]ar', 'llar', 2],
+      ['re[y]', 'yfin', 1, ['y', 'i']], ['ho[y]', 'yfin', 1, ['y', 'i']], ['mu[y]', 'yfin', 1, ['y', 'i']], ['esto[y]', 'yfin', 1, ['y', 'i']], ['le[y]', 'yfin', 1, ['y', 'i']], ['so[y]', 'yfin', 1, ['y', 'i']], ['virre[y]', 'yfin', 2, ['y', 'i']],
+      ['le[y]ó', 'yverb'], ['o[y]endo', 'yverb'], ['le[y]endo', 'yverb'], ['hu[y]ó', 'yverb', 2], ['constru[y]ó', 'yverb', 2], ['cre[y]ó', 'yverb', 2],
+      ['[ll]ave', 'mem'], ['[ll]uvia', 'mem'], ['pla[y]a', 'mem'], ['pa[y]aso', 'mem'], ['[y]ogur', 'mem'], ['ga[ll]ina', 'mem'], ['si[ll]a', 'mem'], ['[y]ema', 'mem'], ['ca[ll]e', 'mem'], ['[ll]orar', 'mem'], ['a[y]er', 'mem', 2]
+    ]
+  },
+  {
+    id: 'cz', title: 'C, Z y QU', emoji: '🦓', color: '#d6336c', short: 'Zapato, cielo, peces, queso…',
+    intro: 'El sonido de <i>zapato</i> y <i>cielo</i> es el mismo, y el de <i>casa</i> y <i>queso</i> también. Lo que cambia es la vocal que viene detrás.',
+    trick: '<b>za, ce, ci, zo, zu</b> · <b>ca, que, qui, co, cu</b>. ¡Mira la vocal siguiente y lo tendrás!',
+    opts: ['c', 'z'],
+    rules: {
+      za: { t: 'ZA, ZO, ZU', d: 'Delante de <b>a, o, u</b> este sonido se escribe con <b>z</b>.' },
+      ce: { t: 'CE, CI', d: 'Delante de <b>e, i</b> se escribe <b>c</b>. (Muy pocas palabras llevan ze o zi, como <i>zeta</i> o <i>zigzag</i>).' },
+      ces: { t: 'Plural -CES', d: 'Las palabras que terminan en <b>z</b> hacen el plural en <b>-ces</b>: lápiz → lápices.' },
+      zfin: { t: 'Singular en -Z', d: 'Si el plural termina en <b>-ces</b>, el singular termina en <b>-z</b>: peces → pez.' },
+      qu: { t: 'QUE, QUI', d: 'Para el sonido K delante de <b>e, i</b> se escribe <b>qu</b> (la u no suena): queso, quince.' },
+      ca: { t: 'CA, CO, CU', d: 'Para el sonido K delante de <b>a, o, u</b> se escribe <b>c</b>: casa, cola, cuna.' }
+    },
+    items: [
+      ['[z]apato', 'za'], ['[z]umo', 'za'], ['cora[z]ón', 'za'], ['[z]anahoria', 'za'], ['pi[z]arra', 'za'], ['a[z]úcar', 'za'], ['pere[z]oso', 'za', 2],
+      ['[c]ielo', 'ce'], ['[c]ebra', 'ce'], ['[c]ine', 'ce'], ['co[c]ina', 'ce'], ['do[c]e', 'ce'], ['[c]irco', 'ce'], ['[c]ereza', 'ce'],
+      ['lápi[c]es', 'ces'], ['pe[c]es', 'ces'], ['lu[c]es', 'ces'], ['nari[c]es', 'ces'], ['vo[c]es', 'ces', 2], ['feli[c]es', 'ces', 2], ['perdi[c]es', 'ces', 2],
+      ['lápi[z]', 'zfin'], ['pe[z]', 'zfin'], ['lu[z]', 'zfin'], ['nari[z]', 'zfin'], ['cru[z]', 'zfin'], ['ve[z]', 'zfin', 2],
+      ['[qu]eso', 'qu', 1, ['qu', 'c']], ['[qu]ince', 'qu', 1, ['qu', 'c']], ['mante[qu]illa', 'qu', 1, ['qu', 'c']], ['es[qu]ina', 'qu', 1, ['qu', 'c']], ['pa[qu]ete', 'qu', 1, ['qu', 'c']], ['[qu]ieto', 'qu', 2, ['qu', 'c']],
+      ['[c]asa', 'ca', 1, ['c', 'qu']], ['[c]oche', 'ca', 1, ['c', 'qu']], ['[c]ubo', 'ca', 1, ['c', 'qu']], ['[c]uento', 'ca', 1, ['c', 'qu']]
+    ]
+  },
+  {
+    id: 'r', title: 'R y RR', emoji: '🦊', color: '#f08c00', short: 'Perro, ratón, Enrique, pelirrojo…',
+    intro: 'La <b>r</b> puede sonar suave (<i>pera</i>) o fuerte (<i>ratón</i>). La <b>rr</b> solo se usa <b>entre dos vocales</b> cuando suena fuerte.',
+    trick: 'La <b>rr</b> nunca va al principio ni al final de una palabra, ni después de n, l o s.',
+    opts: ['r', 'rr'],
+    rules: {
+      rr: { t: 'RR entre vocales', d: 'Entre dos vocales, el sonido <b>fuerte</b> se escribe con <b>rr</b>.' },
+      rsuave: { t: 'R suave entre vocales', d: 'Entre dos vocales, el sonido <b>suave</b> se escribe con una sola <b>r</b>.' },
+      rini: { t: 'R al principio', d: 'Al principio de palabra suena fuerte, pero se escribe con una sola <b>r</b>.' },
+      rnls: { t: 'Después de N, L, S (y en SUB-)', d: 'Después de <b>n, l, s</b> la r suena fuerte pero se escribe sola: Enrique, alrededor, Israel, subrayar.' },
+      rcomp: { t: 'Palabras compuestas', d: 'Si juntamos dos palabras y la segunda empieza por <b>r</b>, queda entre vocales y se escribe <b>rr</b>: peli + rojo = pelirrojo.' }
+    },
+    items: [
+      ['guita[rr]a', 'rr'], ['tie[rr]a', 'rr'], ['a[rr]iba', 'rr'], ['to[rr]e', 'rr'], ['go[rr]o', 'rr'], ['ca[rr]etera', 'rr'], ['a[rr]oz', 'rr'], ['ma[rr]ón', 'rr'], ['ce[rr]ar', 'rr'], ['zo[rr]o', 'rr'],
+      ['ma[r]iposa', 'rsuave'], ['lo[r]o', 'rsuave'], ['fa[r]ola', 'rsuave'], ['ca[r]acol', 'rsuave'], ['mi[r]ar', 'rsuave'], ['pi[r]ata', 'rsuave'],
+      ['[r]atón', 'rini'], ['[r]osa', 'rini'], ['[r]ueda', 'rini'], ['[r]ío', 'rini'], ['[r]egalo', 'rini'],
+      ['En[r]ique', 'rnls'], ['son[r]isa', 'rnls'], ['hon[r]ado', 'rnls', 2], ['al[r]ededor', 'rnls', 2], ['Is[r]ael', 'rnls', 2], ['sub[r]ayar', 'rnls', 2],
+      ['peli[rr]ojo', 'rcomp', 2], ['contra[rr]eloj', 'rcomp', 2], ['auto[rr]etrato', 'rcomp', 2], ['anti[rr]obo', 'rcomp', 2]
+    ]
+  },
+  {
+    id: 'mn', title: 'M y N', emoji: '🎈', color: '#5c940d', short: 'Campo, también, invierno…',
+    intro: 'Antes de <b>p</b> y <b>b</b> se escribe <b>m</b>. Antes de <b>v</b> se escribe <b>n</b>. ¡Es de las reglas más fáciles y más útiles!',
+    trick: 'Junta los labios para decir <i>m</i>, <i>p</i> y <i>b</i>: ¡por eso van juntas!',
+    opts: ['m', 'n'],
+    rules: {
+      mpb: { t: 'MP y MB', d: 'Antes de <b>p</b> y <b>b</b> siempre se escribe <b>m</b>.' },
+      nv: { t: 'NV', d: 'Antes de <b>v</b> siempre se escribe <b>n</b>.' },
+      mn: { t: 'MN', d: 'Algunas palabras tienen <b>m</b> antes de <b>n</b>: himno, alumno, columna.' }
+    },
+    items: [
+      ['ca[m]po', 'mpb'], ['ta[m]bién', 'mpb'], ['i[m]portante', 'mpb'], ['sie[m]pre', 'mpb'], ['ho[m]bre', 'mpb'], ['tie[m]po', 'mpb'], ['co[m]prar', 'mpb'], ['e[m]pujar', 'mpb'], ['ca[m]biar', 'mpb'], ['so[m]bra', 'mpb'], ['ta[m]bor', 'mpb'], ['li[m]pio', 'mpb'],
+      ['i[n]vierno', 'nv'], ['e[n]viar', 'nv'], ['i[n]vitar', 'nv'], ['i[n]vento', 'nv'], ['co[n]vencer', 'nv', 2], ['e[n]vase', 'nv', 2],
+      ['alu[m]no', 'mn'], ['hi[m]no', 'mn', 2], ['colu[m]na', 'mn', 2]
+    ]
+  },
+  {
+    id: 'homo', title: 'Suenan igual', emoji: '👯', color: '#495057', short: 'Hay / ahí / ay, a / ha, hecho / echo…',
+    intro: 'Algunas palabras <b>suenan igual</b> pero se escriben distinto y significan cosas diferentes. Para acertar hay que entender la frase.',
+    trick: 'Lee la frase entera y pregúntate qué significa la palabra que falta.',
+    rules: {
+      a_ha: { t: 'A / HA', d: '<b>Ha</b> es del verbo haber y va con otro verbo: ha hecho, ha venido. <b>A</b> es una preposición: voy a casa.' },
+      hay: { t: 'HAY / AHÍ / ¡AY!', d: '<b>Hay</b> = existe (hay un gato). <b>Ahí</b> = en ese lugar. <b>¡Ay!</b> = queja o dolor.' },
+      aver: { t: 'A VER / HABER', d: '<b>A ver</b> = mirar o comprobar (del verbo ver). <b>Haber</b> es un verbo: va a haber, puede haber.' },
+      hecho: { t: 'HECHO / ECHO', d: '<b>Hecho</b> viene de hacer (he hecho). <b>Echo</b> viene de echar (echo sal).' },
+      tuvo: { t: 'TUVO / TUBO', d: '<b>Tuvo</b> es del verbo tener. <b>Tubo</b> es un objeto alargado y hueco.' },
+      vaya: { t: 'VAYA / VALLA / BAYA', d: '<b>Vaya</b> es del verbo ir o una exclamación. <b>Valla</b> es una cerca. <b>Baya</b> es un fruto pequeño, como el arándano.' },
+      hola: { t: 'HOLA / OLA', d: '<b>Hola</b> es un saludo. <b>Ola</b> es la onda del agua del mar.' },
+      cayo: { t: 'CAYÓ / CALLÓ', d: '<b>Cayó</b> viene de caer. <b>Calló</b> viene de callar (quedarse en silencio).' },
+      vaca: { t: 'VACA / BACA', d: '<b>Vaca</b> es el animal. <b>Baca</b> es el portaequipajes del techo del coche.' },
+      asta: { t: 'HASTA / ASTA', d: '<b>Hasta</b> indica un límite (hasta mañana). <b>Asta</b> es el palo de una bandera o el cuerno de un toro.' }
+    },
+    practices: [
+      { id: 'frases', name: 'Completa la frase', icon: '🧩', desc: 'Elige la palabra correcta según el significado.', kind: 'sent', items: [
+        { s: 'Mi abuela ___ hecho una tarta.', o: ['ha', 'a'], r: 'a_ha' },
+        { s: 'Mañana voy ___ la piscina.', o: ['a', 'ha'], r: 'a_ha' },
+        { s: '___ un gato en el tejado.', o: ['Hay', 'Ahí', 'Ay'], r: 'hay' },
+        { s: 'Deja la mochila ___, encima de la silla.', o: ['ahí', 'hay', 'ay'], r: 'hay' },
+        { s: '¡___, qué daño me he hecho!', o: ['Ay', 'Hay', 'Ahí'], r: 'hay' },
+        { s: '___ qué nota he sacado.', o: ['A ver', 'Haber'], r: 'aver' },
+        { s: 'Mañana va a ___ tormenta.', o: ['haber', 'a ver'], r: 'aver' },
+        { s: 'Ya he ___ los deberes.', o: ['hecho', 'echo'], r: 'hecho' },
+        { s: 'Siempre ___ un poco de sal a la ensalada.', o: ['echo', 'hecho'], r: 'hecho' },
+        { s: 'Ayer mi hermana ___ fiebre.', o: ['tuvo', 'tubo'], r: 'tuvo' },
+        { s: 'Se ha acabado el ___ de pasta de dientes.', o: ['tubo', 'tuvo'], r: 'tuvo' },
+        { s: '¡___ golazo ha metido!', o: ['Vaya', 'Valla', 'Baya'], r: 'vaya' },
+        { s: 'El perro saltó la ___ del jardín.', o: ['valla', 'vaya', 'baya'], r: 'vaya' },
+        { s: '¡___! ¿Cómo estás?', o: ['Hola', 'Ola'], r: 'hola' },
+        { s: 'Hoy hay muchas ___ en la playa.', o: ['olas', 'holas'], r: 'hola' },
+        { s: 'El niño tropezó y se ___ al suelo.', o: ['cayó', 'calló'], r: 'cayo' },
+        { s: 'Cuando entró la profe, todo el mundo se ___.', o: ['calló', 'cayó'], r: 'cayo' },
+        { s: 'Te espero ___ las cinco.', o: ['hasta', 'asta'], r: 'asta' },
+        { s: 'La ___ pasta tranquila en el prado.', o: ['vaca', 'baca'], r: 'vaca', n: 2 },
+        { s: 'Pon las maletas en la ___ del coche.', o: ['baca', 'vaca'], r: 'vaca', n: 2 },
+        { s: 'La bandera ondea en lo alto del ___.', o: ['asta', 'hasta'], r: 'asta', n: 2 },
+        { s: 'El arándano es una ___ de color azul.', o: ['baya', 'vaya', 'valla'], r: 'vaya', n: 2 }
+      ] }
+    ]
+  }
+];
+
+/* Normaliza los módulos de letras: crea su práctica a partir de items */
+for (const m of MODULES) {
+  if (m.items) {
+    const items = m.items.map(([w, rule, lvl = 1, opts]) => {
+      const mt = w.match(/^(.*)\[(.*)\](.*)$/);
+      return { pre: mt[1], ans: mt[2], post: mt[3], full: mt[1] + mt[2] + mt[3], rule, lvl, opts: opts || null };
+    });
+    m.practices = [{ id: 'completa', name: 'Completa la palabra', icon: '✍️', desc: 'Elige la letra que falta: ' + m.opts.map(o => o === '' ? 'sin H' : o).join(' / ') + '…', kind: 'letter', items }];
+  }
+  for (const p of m.practices) p.items.forEach(it => { if (it.n) it.lvl = it.n; if (!it.lvl) it.lvl = 1; });
+}
+const modById = id => MODULES.find(m => m.id === id);
+
+/* ============ Guardado ============ */
+const KEY = 'ortografia-en-juego-v1';
+let DB = { players: {}, current: null };
+try { const raw = localStorage.getItem(KEY); if (raw) { const d = JSON.parse(raw); if (d && typeof d === 'object' && d.players) DB = d; } } catch (e) { /* sin almacenamiento */ }
+const GUEST = { level: 1, best: {} };
+function save() { try { localStorage.setItem(KEY, JSON.stringify(DB)); } catch (e) { /* ignorar */ } }
+function P() { return (DB.current && DB.players[DB.current]) || GUEST; }
+function level() { return P().level === 2 ? 2 : 1; }
+function totalStars() { return Object.values(P().best || {}).reduce((a, b) => a + b, 0); }
+function refreshTop() {
+  $('#playerName').textContent = DB.current || 'Invitado';
+  $('#playerStars').textContent = totalStars();
+  $$('.lvl button').forEach(b => b.classList.toggle('on', +b.dataset.lvl === level()));
+}
+
+/* ============ Render helpers ============ */
+const app = $('#app');
+let view = { name: 'home' };
+let S = null; // sesión de práctica
+
+function hlWord(it) {
+  const mid = it.ans === '' ? '' : `<span class="hl">${esc(it.ans)}</span>`;
+  return esc(it.pre) + mid + esc(it.post);
+}
+function sylChips(syl, k, tcolor, withTilde = true) {
+  return `<span class="sylls">` + syl.map((s, i) =>
+    `<span class="syl${i === k ? ' ton' : ''}" style="--t:${tcolor}">${esc(withTilde ? s : stripAcc(s))}</span>`).join('') + `</span>`;
+}
+function chipsFromStr(str) { // "ca-*mión" → chips con color del tipo
+  const it = parseAcc(str, 1);
+  const info = accInfo(it);
+  return `<button type="button" class="sylls say" data-say="${esc(info.word)}" title="Escuchar">${sylChips(it.syl, it.k, TYPES[info.type].color)}</button>`;
+}
+function pool(prac) { return prac.items.filter(it => it.lvl <= level()); }
+function starStr(n, max = 3) { return '★'.repeat(n) + '☆'.repeat(max - n); }
+function bestOf(key) { return (P().best || {})[key] || 0; }
+
+/* ============ Vistas ============ */
+function showHome() {
+  view = { name: 'home' }; S = null;
+  const name = DB.current;
+  let h = `<div class="card hello"><div class="big">📚</div><div><h1>${name ? '¡Hola, ' + esc(name) + '!' : '¡Hola!'}</h1>
+    <div class="muted">Elige qué quieres repasar. En cada tema tienes <b>teoría</b> con trucos y <b>práctica</b> para ganar estrellas. Nivel actual: <b>${level() === 1 ? '🌱 Básico' : '🚀 Avanzado'}</b>.</div></div></div>
+    <div class="grid">`;
+  for (const m of MODULES) {
+    const got = m.practices.reduce((a, p) => a + bestOf(m.id + '/' + p.id), 0);
+    h += `<button type="button" class="mod" style="--c:${m.color}" data-mod="${m.id}"><div class="em">${m.emoji}</div><b>${esc(m.title)}</b><small>${esc(m.short)}</small>
+      <div class="stars">${starStr(got, m.practices.length * 3)}</div></button>`;
+  }
+  h += `<button type="button" class="mod exam" data-exam="1"><div class="em">🏆</div><b>Gran examen</b><small>15 preguntas mezcladas de todos los temas</small><div class="stars" style="color:#ffe066">${starStr(bestOf('examen'))}</div></button></div>`;
+  app.innerHTML = h;
+  window.scrollTo(0, 0);
+}
+
+function showModule(id, tab = 'teoria') {
+  const m = modById(id);
+  view = { name: 'module', id, tab }; S = null;
+  let h = `<div style="--c:${m.color}"><button type="button" class="back" data-home="1">← Todos los temas</button>
+    <div class="modhead"><div class="em">${m.emoji}</div><div><h1 style="margin:0">${esc(m.title)}</h1><div class="muted">${esc(m.short)}</div></div></div>
+    <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="${tab === 'teoria'}" class="${tab === 'teoria' ? 'on' : ''}" data-tab="teoria">📖 Teoría</button>
+    <button type="button" role="tab" aria-selected="${tab === 'practica'}" class="${tab === 'practica' ? 'on' : ''}" data-tab="practica">🎯 Practicar</button></div>`;
+  h += tab === 'teoria' ? theoryHTML(m) : practiceListHTML(m);
+  h += `</div>`;
+  app.innerHTML = h;
+  window.scrollTo(0, 0);
+}
+
+function practiceListHTML(m) {
+  let h = `<div class="plist">`;
+  for (const p of m.practices) {
+    const n = pool(p).length;
+    h += `<button type="button" class="pbtn" data-start="${m.id}/${p.id}"><span class="em">${p.icon}</span><span style="flex:1"><b>${esc(p.name)}</b><small>${esc(p.desc)}</small><br><small>${n} palabras o frases en este nivel</small></span>
+      <span class="stars">${starStr(bestOf(m.id + '/' + p.id))}</span></button>`;
+  }
+  return h + `</div>`;
+}
+
+function theoryHTML(m) {
+  let h = `<div class="card"><p class="intro" style="margin-top:0">${m.intro}</p>`;
+  if (m.trick) h += `<div class="trick">💡 <b>Truco:</b> ${m.trick}</div>`;
+  if (m.custom) h += accTheoryHTML();
+  if (m.autoRules !== false) {
+    for (const [rid, rule] of Object.entries(m.rules)) {
+      const exs = [];
+      for (const p of m.practices) for (const it of pool(p)) if (it.rule === rid || it.r === rid) exs.push({ p, it });
+      if (!exs.length) continue;
+      h += `<div class="rule"><h3>${esc(rule.t)}</h3><div>${rule.d}</div><div class="ex">`;
+      const shown = exs.slice(0, exs[0].p.kind === 'sent' ? 2 : 7);
+      for (const { p, it } of shown) {
+        if (p.kind === 'letter') h += `<button type="button" class="word say" data-say="${esc(it.full)}">${hlWord(it)}${it.ans === '' ? ' <small class="muted">(sin h)</small>' : ''}</button>`;
+        else if (p.kind === 'sent') { const [a, b] = it.s.split('___'); h += `<div class="sent">✔️ ${esc(a)}<span class="hl">${esc(it.o[0])}</span>${esc(b)}</div>`; }
+        else if (p.kind === 'choose') h += `<button type="button" class="word say" data-say="${esc(it.a)}">${esc(it.a)}</button>`;
+      }
+      h += `</div></div>`;
+    }
+  }
+  h += `<button type="button" class="cta" data-tab="practica">🎯 ¡A practicar!</button></div>`;
+  return h;
+}
+
+function accTheoryHTML() {
+  const row = (type, syls, k, label) => {
+    const off = 4 - syls.length;
+    let tds = '';
+    for (let i = 0; i < 4; i++) {
+      const si = i - off;
+      if (si < 0) tds += `<td class="empty"></td>`;
+      else tds += `<td class="${si === k ? 'ton' : ''}">${esc(syls[si])}</td>`;
+    }
+    return `<tr style="--t:${TYPES[type].color}"><td class="lab">${label}</td>${tds}</tr>`;
+  };
+  const say = canSpeak ? ' Pulsa los ejemplos para oírlos. 🔊' : '';
+  return `
+  <div class="sec"><h2>1️⃣ La sílaba tónica</h2>
+    <p>Es la sílaba que pronunciamos con más fuerza.${say}</p>
+    <div>${chipsFromStr('ca-mión')} ${chipsFromStr('pe-*lo-ta')} ${chipsFromStr('mú-si-ca')} ${chipsFromStr('*me-sa')} ${chipsFromStr('re-*loj')}</div>
+    <div class="trick">💡 <b>Truco:</b> di la palabra como si llamaras a alguien desde lejos: «¡pe-<b>looooo</b>-ta!». La sílaba que alargas es la tónica. Otro truco: prueba a cambiar la fuerza de sitio («<b>PE</b>-lo-ta», «pe-lo-<b>TA</b>», «pe-<b>LO</b>-ta»): la que suena bien es la buena.</div>
+  </div>
+  <div class="sec"><h2>2️⃣ ¿Dónde cae la fuerza?</h2>
+    <p>Contamos las sílabas <b>desde el final</b> de la palabra:</p>
+    <div style="overflow-x:auto"><table class="postable">
+      <tr><th></th><th>antes de la<br>antepenúltima</th><th>antepenúltima</th><th>penúltima</th><th>última</th></tr>
+      ${row('aguda', ['ca', 'mión'], 1, 'Aguda')}
+      ${row('llana', ['ár', 'bol'], 0, 'Llana')}
+      ${row('esdrujula', ['plá', 'ta', 'no'], 0, 'Esdrújula')}
+      ${row('sobresdrujula', ['dí', 'ga', 'me', 'lo'], 0, 'Sobresdrújula')}
+    </table></div>
+    <div class="trick">💡 <b>Para recordarlo:</b> <b>aguda</b> = al final, como la punta afilada de un lápiz ✏️. <b>Llana</b> = la de en medio, la más normal (¡la mayoría de palabras son llanas!). <b>Esdrújula</b> = la palabra rara y larga… ¡y siempre con tilde!</div>
+  </div>
+  <div class="sec"><h2>3️⃣ ¿Cuándo lleva tilde?</h2>
+    <p>La clave son tres finales: <span class="badge">N</span> <span class="badge">S</span> <span class="badge">VOCAL</span></p>
+    <div class="tcards">
+      <div class="tcard" style="--t:var(--aguda)"><h3>Agudas</h3>
+        <div class="yes">✔ Llevan tilde si terminan en N, S o vocal</div>${chipsFromStr('ra-tón')} ${chipsFromStr('com-pás')} ${chipsFromStr('ca-fé')}
+        <div class="no" style="margin-top:6px">✘ Si no, sin tilde</div>${chipsFromStr('re-*loj')} ${chipsFromStr('pa-*red')}</div>
+      <div class="tcard" style="--t:var(--llana)"><h3>Llanas</h3>
+        <div class="yes">✔ Llevan tilde si NO terminan en N, S o vocal</div>${chipsFromStr('ár-bol')} ${chipsFromStr('lá-piz')} ${chipsFromStr('cés-ped')}
+        <div class="no" style="margin-top:6px">✘ Si terminan en N, S o vocal, sin tilde</div>${chipsFromStr('*ca-sa')} ${chipsFromStr('*jo-ven')} ${chipsFromStr('*lu-nes')}</div>
+      <div class="tcard" style="--t:var(--esdrujula)"><h3>Esdrújulas y sobresdrújulas</h3>
+        <div class="yes">✔ ¡Llevan tilde SIEMPRE!</div>${chipsFromStr('mú-si-ca')} ${chipsFromStr('pá-ja-ro')} ${chipsFromStr('dí-ga-me-lo')}</div>
+    </div>
+    <div class="trick">💡 <b>Truco:</b> las agudas y las llanas hacen <b>justo lo contrario</b>, como el día y la noche. 🌞🌙</div>
+  </div>
+  <div class="sec"><h2>4️⃣ El camino de la tilde</h2>
+    <div class="flow">
+      <div class="fstep">1. Separa la palabra en sílabas: <i>ca-mion</i></div><div class="farrow">⬇</div>
+      <div class="fstep">2. Dila en voz alta y busca la sílaba tónica: <i>ca-<b>MION</b></i></div><div class="farrow">⬇</div>
+      <div class="fstep">3. ¿En qué posición está? (contando desde el final)</div><div class="farrow">⬇</div>
+      <div class="fcols">
+        <div class="fcol" style="--t:var(--aguda)"><b>Última → aguda</b><br>¿Termina en N, S o vocal?<br><span class="yes">Sí → tilde</span> · <span class="no">No → sin tilde</span></div>
+        <div class="fcol" style="--t:var(--llana)"><b>Penúltima → llana</b><br>¿Termina en N, S o vocal?<br><span class="no">Sí → sin tilde</span> · <span class="yes">No → tilde</span></div>
+        <div class="fcol" style="--t:var(--esdrujula)"><b>Antepenúltima o antes</b><br>Esdrújula o sobresdrújula<br><span class="yes">→ ¡Tilde siempre!</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec"><h2>5️⃣ Diptongos e hiatos</h2>
+    <p>Vocales <b>abiertas</b> (fuertes): <span class="vow a">A</span><span class="vow a">E</span><span class="vow a">O</span> &nbsp; Vocales <b>cerradas</b> (débiles): <span class="vow c">I</span><span class="vow c">U</span></p>
+    <div class="tcards">
+      <div class="tcard" style="--t:var(--llana)"><h3>Diptongo 🤝</h3>Dos vocales juntas en la <b>misma sílaba</b> (una cerrada con otra vocal). Se siguen las reglas normales.<br>
+        ${chipsFromStr('*cie-lo')} ${chipsFromStr('ciu-*dad')} ${chipsFromStr('a-vión')}<br><small>Si lleva tilde, va en la abierta: a-vi<b>ó</b>n.</small></div>
+      <div class="tcard" style="--t:var(--aguda)"><h3>Hiato con I / U tónica 💔</h3>Si la <b>i</b> o la <b>u</b> es la que suena fuerte, las vocales se separan y la i/u lleva tilde <b>siempre</b>, aunque la regla general diga lo contrario.<br>
+        ${chipsFromStr('Ma-rí-a')} ${chipsFromStr('pa-ís')} ${chipsFromStr('bú-ho')} ${chipsFromStr('ba-úl')}</div>
+    </div>
+  </div>
+  <div class="sec"><h2>6️⃣ Palabras de una sílaba y tilde diacrítica</h2>
+    <p>Las palabras de <b>una sola sílaba</b> no llevan tilde: <i>sol, pan, fue, fui, dio, vio, pie</i>. Pero algunas parejas la llevan para no confundirse:</p>
+    <div style="overflow-x:auto"><table class="pairs">
+      <tr><th>Con tilde</th><th>Sin tilde</th></tr>
+      <tr><td><b>él</b> — Él come. (persona)</td><td><b>el</b> — el perro</td></tr>
+      <tr><td><b>tú</b> — Tú corres. (persona)</td><td><b>tu</b> — tu casa (de ti)</td></tr>
+      <tr><td><b>mí</b> — Es para mí.</td><td><b>mi</b> — mi libro</td></tr>
+      <tr><td><b>sí</b> — ¡Sí, quiero!</td><td><b>si</b> — Si llueve, me mojo.</td></tr>
+      <tr><td><b>té</b> — Bebo té. (bebida)</td><td><b>te</b> — Te quiero.</td></tr>
+      <tr><td><b>sé</b> — Yo sé. (saber)</td><td><b>se</b> — Se lava.</td></tr>
+      <tr><td><b>más</b> — Quiero más.</td><td><b>mas</b> — pero (casi no se usa)</td></tr>
+      <tr><td><b>dé</b> — Que me dé. (dar)</td><td><b>de</b> — vaso de agua</td></tr>
+    </table></div>
+    <div class="trick">❓ <b>Para preguntar:</b> <i>qué, cómo, dónde, cuándo, quién, cuál, cuánto</i> llevan tilde cuando preguntan o exclaman: <i>¿Qué haces?</i> / <i>Creo que sí</i>. Y <b>¿por qué?</b> (pregunta) / <b>porque</b> (respuesta).</div>
+  </div>`;
+}
+
+/* ============ Sesiones de práctica ============ */
+function buildQs(mod, prac, items) {
+  return items.map(it => ({ kind: prac.kind, it, mod, prac }));
+}
+function startPractice(modId, pracId) {
+  const m = modById(modId), p = m.practices.find(x => x.id === pracId);
+  const len = p.len || 10;
+  const make = () => buildQs(m, p, shuffle(pool(p)).slice(0, len));
+  startSession(`${m.emoji} ${m.title} · ${p.name}`, make(), m.id + '/' + p.id, make, () => showModule(m.id, 'practica'));
+}
+function startExam() {
+  const make = () => {
+    const accs = [], others = [];
+    for (const m of MODULES) for (const p of m.practices) for (const it of pool(p)) (p.kind === 'acc' ? accs : others).push({ kind: p.kind, it, mod: m, prac: p });
+    return shuffle([...shuffle(others).slice(0, 12), ...shuffle(accs).slice(0, 3)]);
+  };
+  startSession('🏆 Gran examen', make(), 'examen', make, showHome);
+}
+function startSession(title, qs, key, regen, back) {
+  S = { title, qs, i: 0, pts: 0, max: 0, mistakes: [], streak: 0, bestStreak: 0, key, regen, back };
+  view = { name: 'quiz' };
+  renderQ();
+}
+
+function quizFrame(inner) {
+  const pct = Math.round(S.i / S.qs.length * 100);
+  app.innerHTML = `<div class="qtop"><button type="button" class="back" id="quitBtn">✖ Salir</button>
+    <div class="bar" aria-label="Progreso"><i style="width:${pct}%"></i></div>
+    <div class="score">Pregunta ${S.i + 1}/${S.qs.length} · ✔ ${S.pts} ${S.streak >= 3 ? `<span class="streak">🔥 ${S.streak}</span>` : ''}</div></div>
+    <div class="card qcard" id="qarea" style="--c:${S.qs[S.i].mod.color}"><div class="muted" style="font-size:.85rem">${esc(S.title)}</div>${inner}</div>`;
+  $('#quitBtn').onclick = S.back;
+  window.scrollTo(0, 0);
+}
+function renderQ() {
+  const q = S.qs[S.i];
+  ({ letter: renderLetter, sent: renderSent, choose: renderChoose, acc: renderAcc })[q.kind](q);
+}
+function optLabel(o) { return o === '' ? 'sin h' : o; }
+function speakBtn(text) { return canSpeak ? `<button type="button" class="speak say" data-say="${esc(text)}">🔊 Escuchar</button>` : ''; }
+function ruleHTML(q, rid) {
+  const r = q.mod.rules[rid];
+  return r ? `<div class="rl">📏 <b>${esc(r.t)}:</b> ${r.d}</div>` : '';
+}
+function optButtons(opts, small = false) {
+  return `<div class="opts">` + opts.map((o, i) => `<button type="button" class="opt${small ? ' small' : ''}" data-v="${esc(o)}"><kbd>${i + 1}</kbd>${esc(optLabel(o))}</button>`).join('') + `</div>`;
+}
+function bindOpts(container, correct, onDone) {
+  $$('.opt', container).forEach(btn => btn.addEventListener('click', () => {
+    const v = btn.dataset.v, ok = v === correct;
+    $$('.opt', container).forEach(b => {
+      b.disabled = true;
+      if (b.dataset.v === correct) b.classList.add('right');
+      else if (b === btn) b.classList.add('wrong');
+      else b.classList.add('dim');
+    });
+    onDone(ok, v);
+  }));
+}
+function score(ok, pts = 1) {
+  S.max += pts;
+  if (ok) { S.streak++; S.bestStreak = Math.max(S.bestStreak, S.streak); } else S.streak = 0;
+}
+function nextBtnHTML() { return `<button type="button" class="next" id="nextBtn">${S.i + 1 < S.qs.length ? 'Siguiente ➜' : 'Ver resultados 🏁'}</button>`; }
+function afterAnswer(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html + nextBtnHTML();
+  $('#qarea').appendChild(div);
+  $('#nextBtn').onclick = nextQ;
+  $('#nextBtn').focus({ preventScroll: true });
+  $('#nextBtn').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+function nextQ() { S.i++; if (S.i < S.qs.length) renderQ(); else showResults(); }
+
+function renderLetter(q) {
+  const it = q.it;
+  const opts = it.opts ? shuffle(it.opts) : q.mod.opts;
+  quizFrame(`<div class="qlabel">¿Qué letra falta?</div>
+    <div class="qword">${esc(it.pre)}<span class="blank" id="blank">?</span>${esc(it.post)}</div>
+    ${speakBtn(it.full)}${optButtons(opts)}`);
+  bindOpts($('#qarea'), it.ans, (ok, v) => {
+    const b = $('#blank');
+    b.textContent = it.ans; b.classList.add('filled'); if (it.ans === '') b.classList.add('empty');
+    if (ok) S.pts++; else S.mistakes.push(q);
+    score(ok);
+    const how = it.ans === '' ? ' (sin h)' : ` (con ${esc(it.ans)})`;
+    afterAnswer(`<div class="fb ${ok ? 'ok' : 'ko'}" role="status">${ok ? '✅ ¡Correcto!' : '❌ ¡Casi!'} Se escribe <b>${hlWord(it)}</b>${how}.${ruleHTML(q, it.rule)}</div>`);
+  });
+}
+function renderSent(q) {
+  const it = q.it, [a, b] = it.s.split('___');
+  quizFrame(`<div class="qlabel">Completa la frase:</div>
+    <div class="qsent">${esc(a)}<span class="blank" id="blank">?</span>${esc(b)}</div>${optButtons(shuffle(it.o), true)}`);
+  bindOpts($('#qarea'), it.o[0], ok => {
+    const bl = $('#blank'); bl.textContent = it.o[0]; bl.classList.add('filled');
+    if (ok) S.pts++; else S.mistakes.push(q);
+    score(ok);
+    afterAnswer(`<div class="fb ${ok ? 'ok' : 'ko'}" role="status">${ok ? '✅ ¡Muy bien!' : '❌ No es esa.'} La correcta es <b>${esc(it.o[0])}</b>.${ruleHTML(q, it.r)}</div>`);
+  });
+}
+function renderChoose(q) {
+  const it = q.it;
+  quizFrame(`<div class="qlabel">¿Cuál está bien escrita?</div>${optButtons(shuffle([it.a, ...it.w]))}`);
+  bindOpts($('#qarea'), it.a, ok => {
+    if (ok) S.pts++; else S.mistakes.push(q);
+    score(ok);
+    afterAnswer(`<div class="fb ${ok ? 'ok' : 'ko'}" role="status">${ok ? '✅ ¡Exacto!' : '❌ ¡Casi!'} Se escribe <b>${esc(it.a)}</b>${it.sy ? ` (${esc(it.sy)})` : ''}. ${speakBtn(it.a)}${ruleHTML(q, it.r)}</div>`);
+  });
+}
+function renderAcc(q) {
+  const it = q.it, info = accInfo(it);
+  let good = 0;
+  quizFrame(`<div class="qlabel">Paso 1 de 3 · Lee la palabra en voz alta${canSpeak ? ' o pulsa 🔊' : ''}. ¿Qué sílaba suena más fuerte?</div>
+    <div id="s1">${optButtons(it.syl.map(stripAcc))}</div>${speakBtn(info.word)}
+    <div id="s2"></div><div id="s3"></div>`);
+  $$('#s1 .opt').forEach((b, i) => { b.classList.add('sylbtn'); b.dataset.v = String(i); });
+  bindOpts($('#s1'), String(it.k), ok => {
+    if (ok) good++;
+    $('#s2').innerHTML = `<div class="step"><div class="${ok ? 'yes' : 'no'}">${ok ? '✅ ¡Bien!' : '❌ No.'} La sílaba tónica es «${esc(stripAcc(it.syl[it.k]))}».</div>
+      <h3>Paso 2 de 3 · ¿Qué tipo de palabra es?</h3>
+      <div class="opts">${Object.entries(TYPES).map(([k, t], i) => `<button type="button" class="opt small" data-v="${k}"><kbd>${i + 1}</kbd>${t.name}</button>`).join('')}</div></div>`;
+    $('#s2').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    bindOpts($('#s2'), info.type, ok2 => {
+      if (ok2) good++;
+      $('#s3').innerHTML = `<div class="step"><div class="${ok2 ? 'yes' : 'no'}">${ok2 ? '✅ ¡Eso es!' : '❌ No.'} Es <b>${TYPES[info.type].name.toLowerCase()}</b>: la fuerza está en la ${TYPES[info.type].pos} sílaba.</div>
+        <h3>Paso 3 de 3 · ¿Lleva tilde?</h3>
+        <div class="opts"><button type="button" class="opt small" data-v="si"><kbd>1</kbd>Sí, lleva tilde</button><button type="button" class="opt small" data-v="no"><kbd>2</kbd>No lleva tilde</button></div></div>`;
+      $('#s3').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      bindOpts($('#s3'), info.tilde ? 'si' : 'no', ok3 => {
+        if (ok3) good++;
+        S.pts += good; score(good === 3, 3);
+        if (good < 3) S.mistakes.push(q);
+        afterAnswer(`<div class="fb ${good === 3 ? 'ok' : 'ko'}" role="status">${good === 3 ? '🌟 ¡Perfecto, 3 de 3!' : `Has acertado ${good} de 3.`}
+          <div class="reveal">${sylChips(it.syl, it.k, TYPES[info.type].color)} → ${esc(info.word)}</div>${info.expl}</div>`);
+      });
+    });
+  });
+}
+
+function showResults() {
+  view = { name: 'results' };
+  const pct = S.max ? S.pts / S.max : 0;
+  const stars = pct >= 0.9 ? 3 : pct >= 0.7 ? 2 : pct >= 0.5 ? 1 : 0;
+  const pl = P();
+  if (!pl.best) pl.best = {};
+  const prev = pl.best[S.key] || 0;
+  if (stars > prev) pl.best[S.key] = stars;
+  save(); refreshTop();
+  const msg = stars === 3 ? '¡Eres una máquina de la ortografía! 🏅' : stars === 2 ? '¡Muy bien! Ya casi lo dominas. 💪' : stars === 1 ? '¡Vas por buen camino! Repasa los fallos. 🙂' : 'Lee otra vez la teoría y vuelve a intentarlo. ¡Tú puedes! 🌱';
+  let mist = '';
+  if (S.mistakes.length) {
+    mist = `<div class="mist"><h3>Para repasar:</h3><ul>` + S.mistakes.map(q => {
+      if (q.kind === 'letter') return `<li style="--c:${q.mod.color}">${hlWord(q.it)} — ${esc(q.mod.rules[q.it.rule].t)}</li>`;
+      if (q.kind === 'sent') { const [a, b] = q.it.s.split('___'); return `<li style="--c:${q.mod.color}">${esc(a)}<span class="hl">${esc(q.it.o[0])}</span>${esc(b)}</li>`; }
+      if (q.kind === 'choose') return `<li>${esc(q.it.a)}${q.it.sy ? ` (${esc(q.it.sy)})` : ''}</li>`;
+      const info = accInfo(q.it); return `<li>${esc(info.word)} — ${TYPES[info.type].name.toLowerCase()}, ${info.tilde ? 'con' : 'sin'} tilde</li>`;
+    }).join('') + `</ul></div>`;
+  }
+  app.innerHTML = `<div class="card res"><h2>${esc(S.title)}</h2>
+    <div class="bigstars" style="color:#f59f00">${starStr(stars)}</div>
+    <div class="pct">${Math.round(pct * 100)} %</div>
+    <div>${S.pts} de ${S.max} puntos · Mejor racha: 🔥 ${S.bestStreak}</div>
+    <p><b>${msg}</b>${stars > prev && prev > 0 ? '<br>¡Has mejorado tu récord!' : ''}</p>${mist}
+    <div class="rbtns">${S.mistakes.length ? `<button type="button" class="main" id="rMist">🩹 Repasar fallos (${S.mistakes.length})</button>` : ''}
+      <button type="button" class="${S.mistakes.length ? '' : 'main'}" id="rAgain">🔁 Otra ronda</button>
+      <button type="button" id="rBack">⬅ Volver</button></div></div>`;
+  const old = S;
+  $('#rAgain').onclick = () => startSession(old.title, old.regen(), old.key, old.regen, old.back);
+  $('#rBack').onclick = old.back;
+  if ($('#rMist')) $('#rMist').onclick = () => startSession(old.title + ' · repaso', shuffle(old.mistakes), old.key + '#repaso', () => shuffle(old.mistakes), old.back);
+  if (stars === 3) confetti();
+  window.scrollTo(0, 0);
+}
+function confetti() {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const em = ['⭐', '🎉', '✨', '🌟', '🎈'];
+  for (let i = 0; i < 28; i++) {
+    const s = document.createElement('span');
+    s.className = 'confetti'; s.textContent = em[i % em.length];
+    s.style.left = Math.random() * 100 + 'vw'; s.style.animationDelay = Math.random() * 0.8 + 's';
+    document.body.appendChild(s); setTimeout(() => s.remove(), 3400);
+  }
+}
+
+/* ============ Jugadores ============ */
+function openPlayers() {
+  const names = Object.keys(DB.players);
+  $('#plist').innerHTML = names.length ? names.map(n => `<div class="plrow"><button type="button" class="pl${n === DB.current ? ' cur' : ''}" data-pick="${esc(n)}">👤 ${esc(n)} · ⭐ ${Object.values(DB.players[n].best || {}).reduce((a, b) => a + b, 0)}</button>
+      <button type="button" class="del" data-del="${esc(n)}" aria-label="Borrar a ${esc(n)}">🗑</button></div>`).join('') : '<p class="muted">Escribe tu nombre para guardar tus estrellas.</p>';
+  $('#modal').hidden = false;
+  setTimeout(() => $('#newname').focus(), 50);
+}
+function closePlayers() { $('#modal').hidden = true; refreshTop(); if (view.name === 'home') showHome(); else if (view.name === 'module') showModule(view.id, view.tab); }
+$('#plist').addEventListener('click', e => {
+  const pick = e.target.closest('[data-pick]'), del = e.target.closest('[data-del]');
+  if (pick) { DB.current = pick.dataset.pick; save(); closePlayers(); }
+  else if (del) {
+    const n = del.dataset.del;
+    if (confirm(`¿Borrar a ${n} y todas sus estrellas?`)) { delete DB.players[n]; if (DB.current === n) DB.current = null; save(); openPlayers(); refreshTop(); }
+  }
+});
+$('#newpl').addEventListener('submit', e => {
+  e.preventDefault();
+  const n = $('#newname').value.trim().slice(0, 20);
+  if (!n) return;
+  if (!DB.players[n]) DB.players[n] = { level: 1, best: {} };
+  DB.current = n; $('#newname').value = ''; save(); closePlayers();
+});
+$('#guestBtn').onclick = () => { DB.current = null; save(); closePlayers(); };
+$('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closePlayers(); });
+
+/* ============ Eventos globales ============ */
+$('#homeBtn').onclick = showHome;
+$('#playerBtn').onclick = openPlayers;
+$$('.lvl button').forEach(b => b.onclick = () => {
+  P().level = +b.dataset.lvl; save(); refreshTop();
+  if (view.name === 'home') showHome(); else if (view.name === 'module') showModule(view.id, view.tab);
+});
+app.addEventListener('click', e => {
+  const t = e.target.closest('button');
+  if (!t) return;
+  if (t.classList.contains('say')) { speak(t.dataset.say); return; }
+  if (t.dataset.mod) showModule(t.dataset.mod);
+  else if (t.dataset.exam) startExam();
+  else if (t.dataset.home) showHome();
+  else if (t.dataset.tab && view.name === 'module') showModule(view.id, t.dataset.tab);
+  else if (t.dataset.start) { const [m, p] = t.dataset.start.split('/'); startPractice(m, p); }
+});
+document.addEventListener('keydown', e => {
+  if (!$('#modal').hidden) { if (e.key === 'Escape') closePlayers(); return; }
+  if (view.name !== 'quiz' || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (/^[1-9]$/.test(e.key)) {
+    const live = $$('#qarea .opt').filter(b => !b.disabled);
+    const btn = live[+e.key - 1];
+    if (btn) { e.preventDefault(); btn.click(); }
+  } else if (e.key === 'Enter' && $('#nextBtn') && document.activeElement !== $('#nextBtn')) { e.preventDefault(); $('#nextBtn').click(); }
+});
+
+/* ============ Inicio ============ */
+refreshTop();
+showHome();
+if (!DB.current && !Object.keys(DB.players).length) openPlayers();
+</script>
+</body>
+</html>
